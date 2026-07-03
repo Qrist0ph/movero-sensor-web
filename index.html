@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0f1419" />
+<title>movero-sensor — Gewissheit, dass es zuhause gut geht. Ohne Kamera.</title>
+<meta name="description" content="movero-sensor ist ein diskreter Bewegungssensor fürs Zuhause: Er meldet dir, dass es deinen Angehörigen gut geht – ganz ohne Kamera, Mikrofon oder Ortung." />
+<meta property="og:title" content="movero-sensor — Gewissheit, dass es zuhause gut geht." />
+<meta property="og:description" content="Diskreter Bewegungssensor fürs Zuhause. Push-Benachrichtigung bei ungewöhnlich langer Inaktivität – ohne Kamera, Mikrofon oder Ortung." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://movero-sensor.de/icon-512.png" />
+<style>
+  :root { --bg:#0f1419; --bg2:#0b1016; --card:#1b2430; --line:#243040; --ink:#e7edf3;
+          --muted:#8aa0b2; --ok:#34d399; --accent:#38bdf8; --accent2:#a78bfa; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif;
+         background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 22px; }
+
+  /* header */
+  header { position:sticky; top:0; z-index:10; background:rgba(15,20,25,.82);
+           backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  header .bar { display:flex; align-items:center; gap:12px; padding:14px 0; }
+  header .brand { display:flex; align-items:center; gap:11px; font-weight:700; letter-spacing:.2px; font-size:19px; }
+  header .brand img { width:32px; height:32px; border-radius:8px; }
+  header nav { margin-left:auto; display:flex; align-items:center; gap:22px; }
+  header nav a { color:var(--muted); font-size:14.5px; }
+  header nav a:hover { color:var(--ink); }
+  .btn { display:inline-block; padding:10px 20px; border-radius:11px; font-weight:600; font-size:14.5px;
+         border:1px solid var(--line); color:var(--ink); transition:.15s; white-space:nowrap; }
+  .btn:hover { border-color:#33506b; }
+  .btn.pri { background:var(--accent); color:#06121c; border-color:var(--accent); }
+  .btn.pri:hover { background:#5accfa; }
+  header nav .btn { padding:8px 16px; }
+
+  /* hero */
+  .hero { padding:72px 0 40px; position:relative; overflow:hidden; }
+  .hero::before { content:""; position:absolute; inset:0;
+    background:radial-gradient(680px 340px at 78% -8%, rgba(56,189,248,.16), transparent 70%),
+               radial-gradient(520px 320px at 8% 12%, rgba(167,139,250,.10), transparent 70%); }
+  .hero .grid { position:relative; display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
+  .eyebrow { display:inline-block; font-size:12.5px; font-weight:600; letter-spacing:.6px; text-transform:uppercase;
+             color:var(--accent); background:rgba(56,189,248,.1); border:1px solid rgba(56,189,248,.25);
+             padding:5px 12px; border-radius:999px; }
+  .hero h1 { font-size:clamp(2.1rem,5vw,3.15rem); line-height:1.1; margin:18px 0 0; letter-spacing:-.5px; }
+  .hero h1 .g { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text;
+                background-clip:text; color:transparent; }
+  .hero p.lead { color:var(--muted); font-size:18px; margin:20px 0 0; max-width:34em; }
+  .hero .cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
+  .hero .note { color:var(--muted); font-size:13px; margin-top:14px; }
+
+  .device { justify-self:center; width:100%; max-width:340px; background:var(--card);
+            border:1px solid var(--line); border-radius:22px; padding:22px; text-align:center;
+            box-shadow:0 24px 60px -30px rgba(0,0,0,.7); }
+  .device img { width:150px; height:150px; border-radius:26px; }
+  .device .status { margin-top:18px; display:flex; align-items:center; justify-content:center; gap:9px;
+                    font-weight:600; }
+  .device .status .pulse { width:11px; height:11px; border-radius:50%; background:var(--ok);
+                           box-shadow:0 0 0 0 rgba(52,211,153,.6); animation:pulse 2.2s infinite; }
+  @keyframes pulse { 70% { box-shadow:0 0 0 12px rgba(52,211,153,0); } 100% { box-shadow:0 0 0 0 rgba(52,211,153,0);} }
+  .device .cap { color:var(--muted); font-size:13px; margin-top:6px; }
+
+  /* trust strip */
+  .trust { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:8px 0 4px; }
+  .trust span { font-size:13.5px; color:var(--muted); background:var(--card); border:1px solid var(--line);
+                padding:8px 15px; border-radius:999px; }
+  .trust b { color:var(--ink); font-weight:600; }
+
+  section.sec { padding:64px 0; border-top:1px solid var(--line); }
+  .shead { text-align:center; max-width:40em; margin:0 auto 40px; }
+  .shead h2 { font-size:clamp(1.6rem,3.6vw,2.2rem); margin:0 0 12px; letter-spacing:-.3px; }
+  .shead p { color:var(--muted); margin:0; font-size:17px; }
+
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; }
+  .c { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; }
+  .c .ic { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+           font-size:22px; background:rgba(56,189,248,.12); margin-bottom:14px; }
+  .c h3 { margin:0 0 8px; font-size:17.5px; }
+  .c p { margin:0; color:var(--muted); font-size:14.5px; }
+
+  .steps { counter-reset:s; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+  .step { position:relative; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:26px 22px 22px; }
+  .step::before { counter-increment:s; content:counter(s); position:absolute; top:-16px; left:22px;
+                  width:34px; height:34px; border-radius:10px; background:var(--accent); color:#06121c;
+                  font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .step h3 { margin:8px 0 6px; font-size:16.5px; }
+  .step p { margin:0; color:var(--muted); font-size:14.5px; }
+
+  .cta-band { text-align:center; background:linear-gradient(180deg,var(--card),var(--bg2));
+              border:1px solid var(--line); border-radius:20px; padding:48px 26px; }
+  .cta-band h2 { font-size:clamp(1.6rem,3.6vw,2.2rem); margin:0 0 12px; }
+  .cta-band p { color:var(--muted); margin:0 auto 26px; max-width:34em; }
+
+  footer { border-top:1px solid var(--line); padding:40px 0 56px; color:var(--muted); font-size:14px; }
+  footer .cols { display:flex; flex-wrap:wrap; gap:28px 60px; justify-content:space-between; }
+  footer .brand { display:flex; align-items:center; gap:10px; font-weight:700; color:var(--ink); font-size:17px; }
+  footer .brand img { width:28px; height:28px; border-radius:7px; }
+  footer a { color:var(--muted); } footer a:hover { color:var(--ink); }
+  footer .links { display:flex; flex-direction:column; gap:8px; }
+  footer .imp { max-width:24em; line-height:1.7; }
+  footer .fine { margin-top:30px; padding-top:20px; border-top:1px solid var(--line); font-size:12.5px; }
+  .disc { color:var(--muted); font-size:12.5px; text-align:center; margin-top:14px; }
+
+  @media (max-width:760px){
+    .hero { padding:44px 0 24px; }
+    .hero .grid { grid-template-columns:1fr; gap:32px; }
+    .device { order:-1; max-width:250px; }
+    .device img { width:120px; height:120px; }
+    header nav a:not(.btn) { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/"><img src="/icon-192.png" alt="movero-sensor" />movero-sensor</a>
+    <nav>
+      <a href="#so">So funktioniert's</a>
+      <a href="#warum">Warum movero</a>
+      <a class="btn" href="https://app.movero-sensor.de">Zur App</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow">Bewegungssensor fürs Zuhause</span>
+      <h1>Sieh, dass es zuhause <span class="g">gut geht</span>.<br />Ganz ohne Kamera.</h1>
+      <p class="lead">movero-sensor gibt dir die Gewissheit, dass es deinen Liebsten gut geht – diskret und
+        respektvoll. Bleibt die gewohnte Alltagsbewegung ungewöhnlich lange aus, meldet sich die App bei dir.</p>
+      <div class="cta">
+        <a class="btn pri" href="https://app.movero-sensor.de">App öffnen</a>
+        <a class="btn" href="#so">So funktioniert's</a>
+      </div>
+      <p class="note">Bald auch im Google Play Store · Keine Kamera · Kein Mikrofon · Keine Ortung</p>
+    </div>
+    <div class="device">
+      <img src="/icon-512.png" alt="movero-sensor" />
+      <div class="status"><span class="pulse"></span> Alles in Ordnung</div>
+      <div class="cap">Letzte Bewegung vor 4&nbsp;Minuten</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="trust">
+    <span>🔒 <b>Keine</b> Kamera</span>
+    <span>🎙️ <b>Kein</b> Mikrofon</span>
+    <span>📍 <b>Keine</b> Ortung</span>
+    <span>🇩🇪 Server in Deutschland</span>
+  </div>
+</div>
+
+<section class="sec" id="warum">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Warum movero-sensor</span>
+      <h2>Nähe geben, ohne zu überwachen</h2>
+      <p>Ein kleiner Sensor im Wohnraum erkennt nur eines: Bewegung – ja oder nein. Genug, um zu wissen,
+         dass alles seinen gewohnten Gang geht.</p>
+    </div>
+    <div class="cards">
+      <div class="c"><div class="ic">🔒</div><h3>Privatsphäre zuerst</h3>
+        <p>Keine Kamera, kein Mikrofon, keine Ortung. Der Sensor erfasst ausschließlich Bewegung – nichts, was
+           bloßstellt.</p></div>
+      <div class="c"><div class="ic">🔔</div><h3>Sofort informiert</h3>
+        <p>Bleibt die Bewegung ungewöhnlich lange aus, bekommst du eine Push-Benachrichtigung – ganz ohne
+           ständiges Nachfragen.</p></div>
+      <div class="c"><div class="ic">👨‍👩‍👧</div><h3>Gemeinsam im Blick</h3>
+        <p>Mehrere Familienmitglieder können denselben Sensor beobachten. Verantwortung auf mehreren Schultern.</p></div>
+      <div class="c"><div class="ic">📊</div><h3>Live-Übersicht</h3>
+        <p>Aktueller Status und der Verlauf der letzten Stunden und Tage – übersichtlich auf einen Blick.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="so">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">In 4 Schritten startklar</span>
+      <h2>So funktioniert movero-sensor</h2>
+      <p>Kein WLAN-Setup, kein Techniker. Aufstellen, anmelden, fertig.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Aufstellen</h3><p>Sensor mit Strom versorgen und im Wohnraum platzieren.</p></div>
+      <div class="step"><h3>Verbinden</h3><p>In der App anmelden und den Sensor per Geräte-Code hinzufügen.</p></div>
+      <div class="step"><h3>Einrichten</h3><p>Optional ein Foto zur Zuordnung hinterlegen und Angehörige einladen.</p></div>
+      <div class="step"><h3>Zurücklehnen</h3><p>Die App meldet sich, wenn etwas ungewöhnlich ist. Sonst: Ruhe.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Ein gutes Gefühl im Alltag</h2>
+      <p>movero-sensor schenkt dir und deiner Familie einen ruhigen Rücken – ohne jemanden zu bevormunden.</p>
+      <a class="btn pri" href="https://app.movero-sensor.de">Jetzt App öffnen</a>
+      <p class="disc">movero-sensor ersetzt keinen Notruf und kein medizinisches Gerät.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand"><img src="/icon-192.png" alt="" />movero-sensor</div>
+        <p class="imp">Ein Produkt der yaico GmbH<br />Niklausstraße 17, 50354 Hürth<br />
+           HRB 126793, Amtsgericht Köln<br />
+           <a href="mailto:support@movero-sensor.de">support@movero-sensor.de</a></p>
+      </div>
+      <div class="links">
+        <b style="color:var(--ink)">Rechtliches</b>
+        <a href="https://app.movero-sensor.de/datenschutz">Datenschutzerklärung</a>
+        <a href="https://app.movero-sensor.de/konto-loeschen">Konto &amp; Daten löschen</a>
+        <a href="https://app.movero-sensor.de">Web-App</a>
+      </div>
+    </div>
+    <div class="fine">© 2026 yaico GmbH · movero™ · Alle Rechte vorbehalten.</div>
+  </div>
+</footer>
+
+</body>
+</html>
