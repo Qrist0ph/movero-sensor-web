@@ -14,7 +14,7 @@
 <meta property="og:title" content="movero-sensor — Gewissheit, dass es zuhause gut geht." />
 <meta property="og:description" content="Diskreter Bewegungssensor fürs Zuhause. Push-Benachrichtigung bei ungewöhnlich langer Inaktivität – ohne Kamera, Mikrofon oder Ortung." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://movero-sensor.de/icon-512.png" />
+<meta property="og:image" content="https://movero-sensor.de/hero.jpg" />
 <style>
   :root { --bg:#0f1419; --bg2:#0b1016; --card:#1b2430; --line:#243040; --ink:#e7edf3;
           --muted:#8aa0b2; --ok:#34d399; --accent:#38bdf8; --accent2:#a78bfa; }
@@ -42,31 +42,24 @@
   header nav .btn { padding:8px 16px; }
 
   /* hero */
-  .hero { padding:72px 0 40px; position:relative; overflow:hidden; }
-  .hero::before { content:""; position:absolute; inset:0;
-    background:radial-gradient(680px 340px at 78% -8%, rgba(56,189,248,.16), transparent 70%),
-               radial-gradient(520px 320px at 8% 12%, rgba(167,139,250,.10), transparent 70%); }
-  .hero .grid { position:relative; display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
+  .hero { position:relative; overflow:hidden; border-bottom:1px solid var(--line); }
+  .hero .bg { position:absolute; inset:0; z-index:0; }
+  .hero .bg img { width:100%; height:100%; object-fit:cover; object-position:72% center; }
+  .hero .scrim { position:absolute; inset:0; z-index:1;
+    background:linear-gradient(90deg, rgba(11,16,22,.95) 0%, rgba(11,16,22,.86) 30%, rgba(11,16,22,.42) 60%, rgba(11,16,22,.10) 100%),
+               linear-gradient(0deg, rgba(11,16,22,.5), transparent 42%); }
+  .hero .inner { position:relative; z-index:2; padding:104px 0 112px; }
+  .hero .col { max-width:37em; }
   .eyebrow { display:inline-block; font-size:12.5px; font-weight:600; letter-spacing:.6px; text-transform:uppercase;
-             color:var(--accent); background:rgba(56,189,248,.1); border:1px solid rgba(56,189,248,.25);
+             color:var(--accent); background:rgba(56,189,248,.12); border:1px solid rgba(56,189,248,.3);
              padding:5px 12px; border-radius:999px; }
-  .hero h1 { font-size:clamp(2.1rem,5vw,3.15rem); line-height:1.1; margin:18px 0 0; letter-spacing:-.5px; }
+  .hero h1 { font-size:clamp(2.1rem,5vw,3.35rem); line-height:1.08; margin:18px 0 0; letter-spacing:-.5px;
+             text-shadow:0 2px 24px rgba(0,0,0,.5); }
   .hero h1 .g { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text;
                 background-clip:text; color:transparent; }
-  .hero p.lead { color:var(--muted); font-size:18px; margin:20px 0 0; max-width:34em; }
+  .hero p.lead { color:#c4d2de; font-size:18px; margin:20px 0 0; max-width:34em; text-shadow:0 1px 12px rgba(0,0,0,.5); }
   .hero .cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
   .hero .note { color:var(--muted); font-size:13px; margin-top:14px; }
-
-  .device { justify-self:center; width:100%; max-width:340px; background:var(--card);
-            border:1px solid var(--line); border-radius:22px; padding:22px; text-align:center;
-            box-shadow:0 24px 60px -30px rgba(0,0,0,.7); }
-  .device img { width:150px; height:150px; border-radius:26px; }
-  .device .status { margin-top:18px; display:flex; align-items:center; justify-content:center; gap:9px;
-                    font-weight:600; }
-  .device .status .pulse { width:11px; height:11px; border-radius:50%; background:var(--ok);
-                           box-shadow:0 0 0 0 rgba(52,211,153,.6); animation:pulse 2.2s infinite; }
-  @keyframes pulse { 70% { box-shadow:0 0 0 12px rgba(52,211,153,0); } 100% { box-shadow:0 0 0 0 rgba(52,211,153,0);} }
-  .device .cap { color:var(--muted); font-size:13px; margin-top:6px; }
 
   /* trust strip */
   .trust { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:8px 0 4px; }
@@ -120,10 +113,10 @@
   .disc { color:var(--muted); font-size:12.5px; text-align:center; margin-top:14px; }
 
   @media (max-width:760px){
-    .hero { padding:44px 0 24px; }
-    .hero .grid { grid-template-columns:1fr; gap:32px; }
-    .device { order:-1; max-width:250px; }
-    .device img { width:120px; height:120px; }
+    .hero .inner { padding:56px 0 60px; }
+    .hero .bg img { object-position:66% center; }
+    .hero .scrim { background:
+      linear-gradient(180deg, rgba(11,16,22,.82) 0%, rgba(11,16,22,.72) 45%, rgba(11,16,22,.9) 100%); }
     header nav a:not(.btn) { display:none; }
   }
 </style>
@@ -142,8 +135,15 @@
 </header>
 
 <section class="hero">
-  <div class="wrap grid">
-    <div>
+  <div class="bg">
+    <picture>
+      <source srcset="/hero.webp" type="image/webp" />
+      <img src="/hero.jpg" alt="movero-sensor an der Wand tastet den Raum ab – eine reglose Person am Boden löst keine Bewegung aus, die Sanduhr läuft ab, der Alarm wird ausgelöst." />
+    </picture>
+  </div>
+  <div class="scrim"></div>
+  <div class="wrap inner">
+    <div class="col">
       <span class="eyebrow">Bewegungssensor fürs Zuhause</span>
       <h1>Sieh, dass es zuhause <span class="g">gut geht</span>.<br />Ganz ohne Kamera.</h1>
       <p class="lead">movero-sensor gibt dir die Gewissheit, dass es deinen Liebsten gut geht – diskret und
@@ -153,11 +153,6 @@
         <a class="btn" href="#so">So funktioniert's</a>
       </div>
       <p class="note">Bald auch im Google Play Store · Keine Kamera · Kein Mikrofon · Keine Ortung</p>
-    </div>
-    <div class="device">
-      <img src="/icon-512.png" alt="movero-sensor" />
-      <div class="status"><span class="pulse"></span> Alles in Ordnung</div>
-      <div class="cap">Letzte Bewegung vor 4&nbsp;Minuten</div>
     </div>
   </div>
 </section>
