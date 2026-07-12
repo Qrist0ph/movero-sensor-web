@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0f1419" />
+<title>movero-sensor Objektschutz — Bewegungsalarm ohne WLAN, im Akkubetrieb</title>
+<meta name="description" content="movero-sensor schützt abgelegene Objekte und kritische Infrastruktur: Bewegungsalarm per Push, ganz ohne WLAN über das Mobilnetz (NB-IoT), autark im Akkubetrieb. Kein Router, keine Verkabelung." />
+<meta property="og:title" content="movero-sensor Objektschutz — Bewegungsalarm ohne WLAN, im Akkubetrieb" />
+<meta property="og:description" content="Autarker Bewegungsmelder für Objektschutz & kritische Infrastruktur. Funkt über NB-IoT ohne WLAN, läuft im Akkubetrieb weiter. Alarm in Echtzeit aufs Handy." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://movero-sensor.de/hero.jpg" />
+<style>
+  :root { --bg:#0f1419; --bg2:#0b1016; --card:#1b2430; --line:#243040; --ink:#e7edf3;
+          --muted:#8aa0b2; --ok:#34d399; --accent:#38bdf8; --accent2:#a78bfa; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif;
+         background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 22px; }
+
+  header { position:sticky; top:0; z-index:10; background:rgba(15,20,25,.82);
+           backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  header .bar { display:flex; align-items:center; gap:12px; padding:14px 0; }
+  header .brand { display:flex; align-items:center; gap:11px; font-weight:700; letter-spacing:.2px; font-size:19px; }
+  header .brand img { width:32px; height:32px; border-radius:8px; }
+  header nav { margin-left:auto; display:flex; align-items:center; gap:22px; }
+  header nav a { color:var(--muted); font-size:14.5px; }
+  header nav a:hover { color:var(--ink); }
+  .btn { display:inline-block; padding:10px 20px; border-radius:11px; font-weight:600; font-size:14.5px;
+         border:1px solid var(--line); color:var(--ink); transition:.15s; white-space:nowrap; }
+  .btn:hover { border-color:#33506b; }
+  .btn.pri { background:var(--accent); color:#06121c; border-color:var(--accent); }
+  .btn.pri:hover { background:#5accfa; }
+  header nav .btn { padding:8px 16px; }
+
+  /* hero */
+  .hero { padding:72px 0 44px; position:relative; overflow:hidden; }
+  .hero::before { content:""; position:absolute; inset:0;
+    background:radial-gradient(680px 340px at 78% -8%, rgba(56,189,248,.16), transparent 70%),
+               radial-gradient(520px 320px at 8% 12%, rgba(167,139,250,.10), transparent 70%); }
+  .hero .grid { position:relative; display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
+  .eyebrow { display:inline-block; font-size:12.5px; font-weight:600; letter-spacing:.6px; text-transform:uppercase;
+             color:var(--accent); background:rgba(56,189,248,.1); border:1px solid rgba(56,189,248,.25);
+             padding:5px 12px; border-radius:999px; }
+  .hero h1 { font-size:clamp(2.1rem,5vw,3.15rem); line-height:1.1; margin:18px 0 0; letter-spacing:-.5px; }
+  .hero h1 .g { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text;
+                background-clip:text; color:transparent; }
+  .hero p.lead { color:var(--muted); font-size:18px; margin:20px 0 0; max-width:34em; }
+  .hero .cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
+  .hero .note { color:var(--muted); font-size:13px; margin-top:14px; }
+
+  /* status card */
+  .device { justify-self:center; width:100%; max-width:340px; background:var(--card);
+            border:1px solid var(--line); border-radius:22px; padding:22px; text-align:center;
+            box-shadow:0 24px 60px -30px rgba(0,0,0,.7); }
+  .device .head { display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; font-size:17px; }
+  .device .head .pulse { width:11px; height:11px; border-radius:50%; background:var(--ok);
+                         box-shadow:0 0 0 0 rgba(52,211,153,.6); animation:pulse 2.2s infinite; }
+  @keyframes pulse { 70% { box-shadow:0 0 0 12px rgba(52,211,153,0); } 100% { box-shadow:0 0 0 0 rgba(52,211,153,0);} }
+  .device .rows { margin-top:18px; display:flex; flex-direction:column; gap:11px; text-align:left; }
+  .device .row { display:flex; align-items:center; gap:12px; background:var(--bg2); border:1px solid var(--line);
+                 border-radius:12px; padding:12px 14px; font-size:14.5px; }
+  .device .row .e { font-size:19px; width:22px; text-align:center; }
+  .device .row b { margin-left:auto; color:var(--accent); font-weight:600; }
+  .device .row b.g { color:var(--ok); }
+
+  /* trust strip */
+  .trust { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:8px 0 4px; }
+  .trust span { font-size:13.5px; color:var(--muted); background:var(--card); border:1px solid var(--line);
+                padding:8px 15px; border-radius:999px; }
+  .trust b { color:var(--ink); font-weight:600; }
+
+  section.sec { padding:64px 0; border-top:1px solid var(--line); }
+  .shead { text-align:center; max-width:40em; margin:0 auto 40px; }
+  .shead h2 { font-size:clamp(1.6rem,3.6vw,2.2rem); margin:0 0 12px; letter-spacing:-.3px; }
+  .shead p { color:var(--muted); margin:0; font-size:17px; }
+
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; }
+  .c { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; }
+  .c .ic { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+           font-size:22px; background:rgba(56,189,248,.12); margin-bottom:14px; }
+  .c h3 { margin:0 0 8px; font-size:17.5px; }
+  .c p { margin:0; color:var(--muted); font-size:14.5px; }
+
+  .uses { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; }
+  .use { display:flex; align-items:center; gap:13px; background:var(--card); border:1px solid var(--line);
+         border-radius:14px; padding:16px 18px; }
+  .use .e { font-size:24px; width:28px; text-align:center; }
+  .use span { font-size:15px; }
+
+  .steps { counter-reset:s; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+  .step { position:relative; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:26px 22px 22px; }
+  .step::before { counter-increment:s; content:counter(s); position:absolute; top:-16px; left:22px;
+                  width:34px; height:34px; border-radius:10px; background:var(--accent); color:#06121c;
+                  font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .step h3 { margin:8px 0 6px; font-size:16.5px; }
+  .step p { margin:0; color:var(--muted); font-size:14.5px; }
+
+  .cta-band { text-align:center; background:linear-gradient(180deg,var(--card),var(--bg2));
+              border:1px solid var(--line); border-radius:20px; padding:48px 26px; }
+  .cta-band h2 { font-size:clamp(1.6rem,3.6vw,2.2rem); margin:0 0 12px; }
+  .cta-band p { color:var(--muted); margin:0 auto 26px; max-width:34em; }
+
+  footer { border-top:1px solid var(--line); padding:40px 0 56px; color:var(--muted); font-size:14px; }
+  footer .cols { display:flex; flex-wrap:wrap; gap:28px 60px; justify-content:space-between; }
+  footer .brand { display:flex; align-items:center; gap:10px; font-weight:700; color:var(--ink); font-size:17px; }
+  footer .brand img { width:28px; height:28px; border-radius:7px; }
+  footer a { color:var(--muted); } footer a:hover { color:var(--ink); }
+  footer .links { display:flex; flex-direction:column; gap:8px; }
+  footer .imp { max-width:24em; line-height:1.7; }
+  footer .fine { margin-top:30px; padding-top:20px; border-top:1px solid var(--line); font-size:12.5px; }
+  .disc { color:var(--muted); font-size:12.5px; text-align:center; margin-top:14px; }
+
+  @media (max-width:760px){
+    .hero { padding:44px 0 24px; }
+    .hero .grid { grid-template-columns:1fr; gap:32px; }
+    .device { order:-1; max-width:300px; }
+    header nav a:not(.btn) { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/"><img src="/icon-192.png" alt="movero-sensor" />movero-sensor</a>
+    <nav>
+      <a href="#einsatz">Einsatzbereiche</a>
+      <a href="#so">So funktioniert's</a>
+      <a href="/">Für Zuhause</a>
+      <a class="btn" href="https://app.movero-sensor.de">Zur App</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow">Objektschutz &amp; kritische Infrastruktur</span>
+      <h1>Bewegungsalarm, wo <span class="g">kein WLAN</span> und kein Strom ist.</h1>
+      <p class="lead">movero-sensor überwacht abgelegene Objekte autark: Er meldet jede Bewegung sofort per Push,
+        funkt direkt über das Mobilnetz (NB-IoT) – ganz ohne WLAN – und läuft im Akkubetrieb weiter.
+        Kein Router, keine Verkabelung, kein Techniker vor Ort.</p>
+      <div class="cta">
+        <a class="btn pri" href="https://app.movero-sensor.de">App öffnen</a>
+        <a class="btn" href="#so">So funktioniert's</a>
+      </div>
+      <p class="note">Kein WLAN nötig · Akkubetrieb · Alarm in Echtzeit · Server in Deutschland</p>
+    </div>
+    <div class="device">
+      <div class="head"><span class="pulse"></span> Wächter-Modus aktiv</div>
+      <div class="rows">
+        <div class="row"><span class="e">📡</span> Mobilnetz (NB-IoT) <b>Verbunden</b></div>
+        <div class="row"><span class="e">🔋</span> Akku <b class="g">87 %</b></div>
+        <div class="row"><span class="e">🛡️</span> Überwachung <b>Scharf</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="trust">
+    <span>📡 <b>Kein</b> WLAN nötig</span>
+    <span>🔋 Läuft im <b>Akkubetrieb</b></span>
+    <span>🔔 Alarm in <b>Echtzeit</b></span>
+    <span>🇩🇪 Server in Deutschland</span>
+  </div>
+</div>
+
+<section class="sec" id="warum">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Warum movero-sensor</span>
+      <h2>Schutz genau dort, wo klassische Technik aufgibt</h2>
+      <p>Baustellen, leerstehende Gebäude, Technikräume, abgelegene Anlagen – Orte ohne Internet und ohne
+         verlässlichen Strom. Genau dafür ist movero-sensor gebaut.</p>
+    </div>
+    <div class="cards">
+      <div class="c"><div class="ic">📡</div><h3>NB-IoT statt WLAN</h3>
+        <p>Der Sensor funkt direkt über das Mobilfunknetz. Kein Router, kein Gäste-WLAN, keine IT-Einrichtung
+           vor Ort – er ist überall sofort online.</p></div>
+      <div class="c"><div class="ic">🔋</div><h3>Autark im Akkubetrieb</h3>
+        <p>Läuft auch ohne Steckdose und übersteht Stromausfälle. Ideal für Orte ganz ohne Infrastruktur –
+           einfach aufstellen und überwachen.</p></div>
+      <div class="c"><div class="ic">🛡️</div><h3>Wächter-Modus</h3>
+        <p>Scharfschalten – und jede Bewegung im überwachten Zeitfenster löst sofort einen Alarm aus.
+           Optional nur nachts oder außerhalb der Betriebszeiten.</p></div>
+      <div class="c"><div class="ic">⚡</div><h3>In Minuten einsatzbereit</h3>
+        <p>Kein Kabel, kein Setup vor Ort. Aufstellen, in der App scharfschalten, fertig – und ebenso schnell
+           an den nächsten Standort versetzt.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="einsatz">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Einsatzbereiche</span>
+      <h2>Wo movero-sensor schützt</h2>
+      <p>Überall dort, wo es kein WLAN und oft keinen Strom gibt – aber trotzdem jemand wissen muss,
+         wenn sich etwas bewegt.</p>
+    </div>
+    <div class="uses">
+      <div class="use"><span class="e">🏗️</span><span>Baustellen &amp; Lagerplätze</span></div>
+      <div class="use"><span class="e">🏚️</span><span>Leerstehende Gebäude &amp; Immobilien</span></div>
+      <div class="use"><span class="e">🖥️</span><span>Technik- &amp; Serverräume</span></div>
+      <div class="use"><span class="e">⚡</span><span>Trafostationen &amp; Umspannwerke</span></div>
+      <div class="use"><span class="e">💧</span><span>Pumpwerke &amp; Wasserversorgung</span></div>
+      <div class="use"><span class="e">📶</span><span>Funkmasten &amp; abgelegene Anlagen</span></div>
+      <div class="use"><span class="e">🚜</span><span>Scheunen, Garagen &amp; Nebengebäude</span></div>
+      <div class="use"><span class="e">🏡</span><span>Ferienhäuser &amp; Wochenendgrundstücke</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="so">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">In 4 Schritten scharf</span>
+      <h2>So funktioniert der Objektschutz</h2>
+      <p>Keine Verkabelung, kein WLAN-Setup, kein Techniker. Aufstellen, scharfschalten, geschützt.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Aufstellen</h3><p>Sensor am zu schützenden Ort platzieren – ganz ohne WLAN oder Verkabelung.</p></div>
+      <div class="step"><h3>Scharfschalten</h3><p>In der App den Wächter-Modus aktivieren, optional mit Zeitfenster.</p></div>
+      <div class="step"><h3>Überwachen</h3><p>NB-IoT hält den Sensor über das Mobilnetz dauerhaft online – im Akkubetrieb.</p></div>
+      <div class="step"><h3>Alarmiert</h3><p>Bei Bewegung sofort Push aufs Handy – wo immer du gerade bist.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Objekte schützen, ohne Infrastruktur</h2>
+      <p>Ein Sensor, der dort funktioniert, wo sonst nichts erreichbar ist – autark, mobil und sofort einsatzbereit.</p>
+      <a class="btn pri" href="https://app.movero-sensor.de">Jetzt App öffnen</a>
+      <p class="disc">movero-sensor ist eine Hilfe zur Bewegungserkennung und ersetzt keine zertifizierte Alarmanlage (z.&nbsp;B. VdS) oder einen Wachdienst.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand"><img src="/icon-192.png" alt="" />movero-sensor</div>
+        <p class="imp">Ein Produkt der yaico GmbH<br />Niklausstraße 17, 50354 Hürth<br />
+           HRB 126793, Amtsgericht Köln<br />
+           <a href="mailto:support@movero-sensor.de">support@movero-sensor.de</a></p>
+      </div>
+      <div class="links">
+        <b style="color:var(--ink)">movero-sensor</b>
+        <a href="/">Für Zuhause &amp; Angehörige</a>
+        <a href="/objektschutz/">Objektschutz &amp; Infrastruktur</a>
+        <a href="https://app.movero-sensor.de">Web-App</a>
+      </div>
+      <div class="links">
+        <b style="color:var(--ink)">Rechtliches</b>
+        <a href="https://app.movero-sensor.de/datenschutz">Datenschutzerklärung</a>
+        <a href="https://app.movero-sensor.de/konto-loeschen">Konto &amp; Daten löschen</a>
+      </div>
+    </div>
+    <div class="fine">© 2026 yaico GmbH · movero™ · Alle Rechte vorbehalten.</div>
+  </div>
+</footer>
+
+</body>
+</html>
