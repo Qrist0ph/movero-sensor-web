@@ -14,7 +14,7 @@
 <meta property="og:title" content="movero-sensor Objektschutz — Bewegungsalarm ohne WLAN, im Akkubetrieb" />
 <meta property="og:description" content="Autarker Bewegungsmelder für Objektschutz & kritische Infrastruktur. Funkt über NB-IoT ohne WLAN, läuft im Akkubetrieb weiter. Alarm in Echtzeit aufs Handy." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://movero-sensor.de/hero.jpg" />
+<meta property="og:image" content="https://movero-sensor.de/hero-objektschutz.jpg" />
 <style>
   :root { --bg:#0f1419; --bg2:#0b1016; --card:#1b2430; --line:#243040; --ink:#e7edf3;
           --muted:#8aa0b2; --ok:#34d399; --accent:#38bdf8; --accent2:#a78bfa; }
@@ -41,35 +41,24 @@
   header nav .btn { padding:8px 16px; }
 
   /* hero */
-  .hero { padding:72px 0 44px; position:relative; overflow:hidden; }
-  .hero::before { content:""; position:absolute; inset:0;
-    background:radial-gradient(680px 340px at 78% -8%, rgba(56,189,248,.16), transparent 70%),
-               radial-gradient(520px 320px at 8% 12%, rgba(167,139,250,.10), transparent 70%); }
-  .hero .grid { position:relative; display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
+  .hero { position:relative; overflow:hidden; border-bottom:1px solid var(--line); }
+  .hero .bg { position:absolute; inset:0; z-index:0; }
+  .hero .bg img { width:100%; height:100%; object-fit:cover; object-position:60% center; }
+  .hero .scrim { position:absolute; inset:0; z-index:1;
+    background:linear-gradient(90deg, rgba(11,16,22,.95) 0%, rgba(11,16,22,.86) 30%, rgba(11,16,22,.44) 60%, rgba(11,16,22,.12) 100%),
+               linear-gradient(0deg, rgba(11,16,22,.5), transparent 42%); }
+  .hero .inner { position:relative; z-index:2; padding:104px 0 112px; }
+  .hero .col { max-width:37em; }
   .eyebrow { display:inline-block; font-size:12.5px; font-weight:600; letter-spacing:.6px; text-transform:uppercase;
-             color:var(--accent); background:rgba(56,189,248,.1); border:1px solid rgba(56,189,248,.25);
+             color:var(--accent); background:rgba(56,189,248,.12); border:1px solid rgba(56,189,248,.3);
              padding:5px 12px; border-radius:999px; }
-  .hero h1 { font-size:clamp(2.1rem,5vw,3.15rem); line-height:1.1; margin:18px 0 0; letter-spacing:-.5px; }
+  .hero h1 { font-size:clamp(2.1rem,5vw,3.35rem); line-height:1.08; margin:18px 0 0; letter-spacing:-.5px;
+             text-shadow:0 2px 24px rgba(0,0,0,.5); }
   .hero h1 .g { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text;
                 background-clip:text; color:transparent; }
-  .hero p.lead { color:var(--muted); font-size:18px; margin:20px 0 0; max-width:34em; }
+  .hero p.lead { color:#c4d2de; font-size:18px; margin:20px 0 0; max-width:34em; text-shadow:0 1px 12px rgba(0,0,0,.5); }
   .hero .cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
   .hero .note { color:var(--muted); font-size:13px; margin-top:14px; }
-
-  /* status card */
-  .device { justify-self:center; width:100%; max-width:340px; background:var(--card);
-            border:1px solid var(--line); border-radius:22px; padding:22px; text-align:center;
-            box-shadow:0 24px 60px -30px rgba(0,0,0,.7); }
-  .device .head { display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; font-size:17px; }
-  .device .head .pulse { width:11px; height:11px; border-radius:50%; background:var(--ok);
-                         box-shadow:0 0 0 0 rgba(52,211,153,.6); animation:pulse 2.2s infinite; }
-  @keyframes pulse { 70% { box-shadow:0 0 0 12px rgba(52,211,153,0); } 100% { box-shadow:0 0 0 0 rgba(52,211,153,0);} }
-  .device .rows { margin-top:18px; display:flex; flex-direction:column; gap:11px; text-align:left; }
-  .device .row { display:flex; align-items:center; gap:12px; background:var(--bg2); border:1px solid var(--line);
-                 border-radius:12px; padding:12px 14px; font-size:14.5px; }
-  .device .row .e { font-size:19px; width:22px; text-align:center; }
-  .device .row b { margin-left:auto; color:var(--accent); font-weight:600; }
-  .device .row b.g { color:var(--ok); }
 
   /* trust strip */
   .trust { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:8px 0 4px; }
@@ -119,9 +108,10 @@
   .disc { color:var(--muted); font-size:12.5px; text-align:center; margin-top:14px; }
 
   @media (max-width:760px){
-    .hero { padding:44px 0 24px; }
-    .hero .grid { grid-template-columns:1fr; gap:32px; }
-    .device { order:-1; max-width:300px; }
+    .hero .inner { padding:56px 0 60px; }
+    .hero .bg img { object-position:62% center; }
+    .hero .scrim { background:
+      linear-gradient(180deg, rgba(11,16,22,.82) 0%, rgba(11,16,22,.72) 45%, rgba(11,16,22,.9) 100%); }
     header nav a:not(.btn) { display:none; }
   }
 </style>
@@ -141,8 +131,15 @@
 </header>
 
 <section class="hero">
-  <div class="wrap grid">
-    <div>
+  <div class="bg">
+    <picture>
+      <source srcset="/hero-objektschutz.webp" type="image/webp" />
+      <img src="/hero-objektschutz.jpg" alt="movero-sensor am Mast überwacht ein Umspannwerk bei Nacht: der Bewegungsscan erfasst einen Eindringling und löst Alarm aus, gefunkt über NB-IoT zum Mobilfunkmast, betrieben per Akku." />
+    </picture>
+  </div>
+  <div class="scrim"></div>
+  <div class="wrap inner">
+    <div class="col">
       <span class="eyebrow">Objektschutz &amp; kritische Infrastruktur</span>
       <h1>Bewegungsalarm, wo <span class="g">kein WLAN</span> und kein Strom ist.</h1>
       <p class="lead">movero-sensor überwacht abgelegene Objekte autark: Er meldet jede Bewegung sofort per Push,
@@ -153,14 +150,6 @@
         <a class="btn" href="#so">So funktioniert's</a>
       </div>
       <p class="note">Kein WLAN nötig · Akkubetrieb · Alarm in Echtzeit · Server in Deutschland</p>
-    </div>
-    <div class="device">
-      <div class="head"><span class="pulse"></span> Wächter-Modus aktiv</div>
-      <div class="rows">
-        <div class="row"><span class="e">📡</span> Mobilnetz (NB-IoT) <b>Verbunden</b></div>
-        <div class="row"><span class="e">🔋</span> Akku <b class="g">87 %</b></div>
-        <div class="row"><span class="e">🛡️</span> Überwachung <b>Scharf</b></div>
-      </div>
     </div>
   </div>
 </section>
