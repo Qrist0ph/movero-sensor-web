@@ -2,6 +2,18 @@
 <html lang="de">
 <head>
 <meta charset="utf-8" />
+<!-- Google tag (Google Ads Conversion-Messung). Consent Mode v2: ohne Einwilligung keine Cookies. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var mvConsent = null;
+  try { mvConsent = localStorage.getItem("mv-consent"); } catch (e) {}
+  var mvState = mvConsent === "granted" ? "granted" : "denied";
+  gtag("consent", "default", { ad_storage: mvState, ad_user_data: mvState, ad_personalization: mvState, analytics_storage: mvState });
+  gtag("js", new Date());
+  gtag("config", "G-TEC8P6V1F9");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TEC8P6V1F9"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -260,6 +272,30 @@
     <div class="fine">© 2026 yaico GmbH · movero™ · Alle Rechte vorbehalten.</div>
   </div>
 </footer>
+
+<div id="mv-consent" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:620px;margin:0 auto;
+     background:#fff;border:1px solid #e8e0d4;border-radius:16px;padding:18px 20px;box-shadow:0 20px 50px -20px rgba(90,60,30,.45);font-size:15px;line-height:1.5">
+  Wir möchten messen, ob unsere Google-Anzeigen zu Anfragen führen. Dafür setzt Google Cookies – nur mit Ihrer Einwilligung.
+  <a href="https://app.movero-sensor.de/datenschutz" style="text-decoration:underline">Datenschutz</a>
+  <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+    <button type="button" data-c="granted" style="font:inherit;font-weight:600;padding:9px 18px;border-radius:12px;border:2px solid #2f855a;background:#2f855a;color:#fff;cursor:pointer">Einverstanden</button>
+    <button type="button" data-c="denied" style="font:inherit;font-weight:600;padding:9px 18px;border-radius:12px;border:2px solid #e8e0d4;background:#fff;color:#2d2a26;cursor:pointer">Ablehnen</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var box = document.getElementById("mv-consent");
+    if (mvConsent) return;
+    box.hidden = false;
+    box.addEventListener("click", function (e) {
+      var v = e.target.getAttribute && e.target.getAttribute("data-c");
+      if (!v) return;
+      try { localStorage.setItem("mv-consent", v); } catch (err) {}
+      gtag("consent", "update", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+      box.hidden = true;
+    });
+  })();
+</script>
 
 </body>
 </html>
