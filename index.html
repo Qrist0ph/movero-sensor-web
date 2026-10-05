@@ -14,6 +14,7 @@
   gtag("config", "G-TEC8P6V1F9");
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEC8P6V1F9"></script>
+<script defer src="/meta-pixel.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -465,7 +466,7 @@
 
 <div id="mv-consent" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:620px;margin:0 auto;
      background:#fff;border:1px solid #e8e0d4;border-radius:16px;padding:18px 20px;box-shadow:0 20px 50px -20px rgba(90,60,30,.45);font-size:15px;line-height:1.5">
-  Wir möchten messen, ob unsere Google-Anzeigen zu Anfragen führen. Dafür setzt Google Cookies – nur mit Ihrer Einwilligung.
+  Wir möchten messen, ob unsere Anzeigen bei Google, Facebook und Instagram zu Anfragen führen. Dafür setzen Google und Meta Cookies – nur mit Ihrer Einwilligung.
   <a href="https://app.movero-sensor.de/datenschutz" style="text-decoration:underline">Datenschutz</a>
   <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
     <button type="button" data-c="granted" style="font:inherit;font-weight:600;padding:9px 18px;border-radius:12px;border:2px solid #2f855a;background:#2f855a;color:#fff;cursor:pointer">Einverstanden</button>
@@ -482,6 +483,7 @@
       if (!v) return;
       try { localStorage.setItem("mv-consent", v); } catch (err) {}
       gtag("consent", "update", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+      window.dispatchEvent(new CustomEvent("mv-consent", { detail: v }));
       box.hidden = true;
     });
   })();
