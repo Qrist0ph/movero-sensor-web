@@ -3,7 +3,7 @@
 // keinen cookielosen Modus, also wird ohne Einwilligung gar nichts geladen.
 // Auf /danke/ wird zusätzlich das Standard-Ereignis "Lead" gesendet.
 (function () {
-  var PIXEL_ID = ""; // TODO: Pixel-ID aus dem Meta Events Manager eintragen – leer = Pixel aus
+  var PIXEL_ID = "2663035617545370"; // Datensatz "movero-sensor.de", Werbekonto movero (Portfolio Yaico GmbH) – leer = Pixel aus
 
   function load() {
     if (!PIXEL_ID || window.fbq) return;
