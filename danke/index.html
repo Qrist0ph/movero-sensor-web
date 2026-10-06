@@ -220,6 +220,7 @@
       <div class="links">
         <b style="color:var(--ink)">Rechtliches</b>
         <a href="https://app.movero-sensor.de/datenschutz">Datenschutzerklärung</a>
+        <a href="#" onclick="mvResetConsent(); return false;">Cookie-Einstellungen</a>
         <a href="https://app.movero-sensor.de/konto-loeschen">Konto &amp; Daten löschen</a>
       </div>
     </div>
@@ -252,5 +253,21 @@
   })();
 </script>
 
+<script>
+  // Einwilligung widerrufen/aendern (Link "Cookie-Einstellungen" im Footer):
+  // gespeicherte Wahl und vorhandene Google-/Meta-Cookies entfernen, Banner neu zeigen.
+  function mvResetConsent() {
+    try { localStorage.removeItem("mv-consent"); } catch (e) {}
+    document.cookie.split(";").forEach(function (c) {
+      var n = c.split("=")[0].trim();
+      if (/^(_ga|_gid|_gcl|_fbp|_fbc)/.test(n)) {
+        ["", "; domain=.movero-sensor.de", "; domain=movero-sensor.de"].forEach(function (d) {
+          document.cookie = n + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + d;
+        });
+      }
+    });
+    location.reload();
+  }
+</script>
 </body>
 </html>
