@@ -22,6 +22,7 @@
 
   var c = null;
   try { c = localStorage.getItem("mv-consent"); } catch (e) {}
-  if (c === "granted") load();
+  // MESSTEST bis 2026-10-15: window.MV_BANNER_OFF (in den Seiten gesetzt) laedt den Pixel ohne Einwilligung.
+  if (c !== "denied" && (window.MV_BANNER_OFF || c === "granted")) load();
   window.addEventListener("mv-consent", function (e) { if (e.detail === "granted") load(); });
 })();
