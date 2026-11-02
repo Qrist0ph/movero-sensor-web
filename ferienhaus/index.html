@@ -108,13 +108,38 @@
   .shead h2 { font-size:clamp(1.8rem,3.4vw,2.5rem); line-height:1.15; margin:8px 0 12px; }
   .shead p { color:var(--muted); margin:0; font-size:18px; }
 
-  /* property cards */
-  .homes { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .home { margin:0; }
-  .home img { width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; border-radius:18px; }
-  .home figcaption { padding-top:12px; }
-  .home b { display:block; font-size:17px; }
-  .home span { color:var(--muted); font-size:15.5px; }
+  /* sensor infographic + app mockup */
+  .tech { display:grid; grid-template-columns:1.6fr 1fr; gap:24px; align-items:stretch; }
+  .tech > * { min-width:0; }
+  .tech-main { display:flex; flex-direction:column; gap:24px; }
+  .closeup { position:relative; margin:0; }
+  .closeup img { width:100%; height:auto; border-radius:20px; }
+  .mk, .feats li::before { width:28px; height:28px; border-radius:50%; background:var(--accent); color:#fff;
+       font-size:14px; font-weight:600; display:flex; align-items:center; justify-content:center; }
+  .mk { position:absolute; transform:translate(-50%,-50%); border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.25); box-sizing:content-box; }
+  .feats { counter-reset:f; list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:18px 24px; }
+  .feats li { counter-increment:f; position:relative; padding-left:40px; }
+  .feats li::before { content:counter(f); position:absolute; left:0; top:0; }
+  .feats b { display:block; font-size:17px; }
+  .feats span { color:var(--muted); font-size:15.5px; }
+  .app { margin:0; background:var(--soft); border-radius:20px; padding:24px; display:flex; flex-direction:column;
+         align-items:center; justify-content:center; gap:16px; }
+  .app figcaption { text-align:center; }
+  .app figcaption b { display:block; font-size:17px; }
+  .app figcaption span { color:var(--muted); font-size:15px; }
+  .phone { width:100%; max-width:280px; background:#0f1419; border:8px solid #222; border-radius:34px;
+           padding:18px 12px 14px; color:#e7edf3; font-size:13px; line-height:1.4; }
+  .phone .hi { font-size:17px; margin:0 4px 12px; }
+  .pc { background:#1b2430; border-radius:12px; padding:12px; margin-bottom:8px; }
+  .pc .t { display:flex; align-items:center; gap:7px; font-size:15px; }
+  .pc .t i { width:9px; height:9px; border-radius:50%; background:#6ee7a8; flex:none; }
+  .pc .t em { margin-left:auto; font-style:normal; font-size:12.5px; color:#6ee7a8; }
+  .pc.al .t i { background:#f87171; }
+  .pc.al .t em { color:#f87171; }
+  .pc .s { display:flex; align-items:flex-end; gap:2px; height:26px; margin:8px 0; }
+  .pc .s u { flex:1; background:#60b5f5; border-radius:1px; text-decoration:none; }
+  .pc small { display:block; color:#a3b3c2; font-size:11.5px; }
+  .phone .fab { display:block; width:max-content; margin:10px 0 0 auto; padding:7px 14px; background:#285a8c; border-radius:12px; font-size:12.5px; }
 
   /* split sections */
   .split { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
@@ -218,7 +243,7 @@
     .facts { grid-template-columns:1fr 1fr; }
     .facts div:nth-child(3) { border-left:0; }
     .facts div:nth-child(n+3) { border-top:1px solid var(--line); }
-    .cards { grid-template-columns:1fr; }
+    .cards, .tech { grid-template-columns:1fr; }
     .steps { grid-template-columns:1fr 1fr; }
   }
   @media (max-width:640px){
@@ -226,8 +251,8 @@
     .wrap { padding:0 16px; }
     section.sec { padding:52px 0; }
     header nav .btn:not(.pri) { display:none; }
-    .homes { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px; margin:0 -16px; padding:0 16px 6px; }
-    .home { flex:0 0 78%; scroll-snap-align:center; }
+    .feats { grid-template-columns:1fr; }
+    .mk { width:22px; height:22px; font-size:12px; }
     .profiles, form .row { grid-template-columns:1fr; }
     .steps { grid-template-columns:1fr; }
     .facts div { padding:14px 16px; }
@@ -288,23 +313,51 @@
 <section class="sec">
   <div class="wrap">
     <div class="shead">
-      <span class="eyebrow">Wofür movero-sensor gedacht ist</span>
+      <span class="eyebrow">Das steckt drin</span>
       <h2>Für Häuser, die oft leer stehen und weit weg sind</h2>
       <p>Zwischen den Buchungen ist niemand da, der nach dem Rechten sieht. Einstecken genügt: Der Sensor
          braucht keinen Router und keine Installation.</p>
     </div>
-    <div class="homes">
-      <figure class="home">
-        <picture><source srcset="/ferienhaus-see.webp" type="image/webp" /><img src="/ferienhaus-see.jpg" width="1000" height="747" loading="lazy" alt="Holzhaus an einem ruhigen See mit Steg." /></picture>
-        <figcaption><b>Haus am See</b><span>Kein Internetanschluss? Kein Problem.</span></figcaption>
-      </figure>
-      <figure class="home">
-        <picture><source srcset="/ferienhaus-berge.webp" type="image/webp" /><img src="/ferienhaus-berge.jpg" width="1000" height="747" loading="lazy" alt="Chalet aus Holz und Stein vor Berggipfeln." /></picture>
-        <figcaption><b>Chalet in den Bergen</b><span>Im Blick, auch in der Nebensaison.</span></figcaption>
-      </figure>
-      <figure class="home">
-        <picture><source srcset="/ferienhaus-kueste.webp" type="image/webp" /><img src="/ferienhaus-kueste.jpg" width="1000" height="747" loading="lazy" alt="Weißes Reetdachhaus hinter den Dünen an der Nordsee." /></picture>
-        <figcaption><b>Haus an der Küste</b><span>Wissen, was los ist, ohne hinzufahren.</span></figcaption>
+    <div class="tech">
+      <div class="tech-main">
+        <figure class="closeup">
+          <picture><source srcset="/ferienhaus-sensor.webp" type="image/webp" /><img src="/ferienhaus-sensor.jpg" width="1400" height="787" loading="lazy" alt="Nahaufnahme des weißen movero-sensor an der Wand, rechts steckt ein dünnes USB-Kabel." /></picture>
+          <span class="mk" style="left:15%;top:33%" aria-hidden="true">1</span>
+          <span class="mk" style="left:44%;top:33%" aria-hidden="true">2</span>
+          <span class="mk" style="left:29.4%;top:50%" aria-hidden="true">3</span>
+          <span class="mk" style="left:54.4%;top:50%" aria-hidden="true">4</span>
+        </figure>
+        <ol class="feats">
+          <li><b>Kein WLAN erforderlich</b><span>Der Sensor funkt selbst über das Mobilfunknetz, ganz ohne Router.</span></li>
+          <li><b>SIM inklusive</b><span>Die SIM-Karte ist eingebaut, der Mobilfunk im Monatspreis enthalten.</span></li>
+          <li><b>Smarter Bewegungsmelder</b><span>Erfasst nur Bewegung und meldet sie an die App. Ohne Kamera und Mikrofon.</span></li>
+          <li><b>Einfache USB-Stromversorgung</b><span>USB-Kabel anschließen, in die Steckdose stecken, fertig.</span></li>
+        </ol>
+      </div>
+      <figure class="app">
+        <div class="phone" role="img" aria-label="Beispielansicht der movero-App mit drei Ferienhäusern: Haus am See meldet einen Alarm wegen Bewegung im Wächter-Fenster, Chalet und Küstenhaus zeigen OK.">
+          <p class="hi">Hallo!</p>
+          <div class="pc al">
+            <div class="t"><i></i>Haus am See<em>ALARM</em></div>
+            <div class="s"><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:30%"></u><u style="height:70%"></u><u style="height:100%"></u><u style="height:55%"></u><u style="height:80%"></u></div>
+            <small>Bewegung im Wächter-Fenster</small>
+            <small>Letzte Bewegung: vor 8 min</small>
+          </div>
+          <div class="pc">
+            <div class="t"><i></i>Chalet<em>OK</em></div>
+            <div class="s"><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u></div>
+            <small>Letzte Bewegung: vor 3 Tagen</small>
+            <small>Zuletzt online: vor 6 min</small>
+          </div>
+          <div class="pc">
+            <div class="t"><i></i>Haus an der Küste<em>OK</em></div>
+            <div class="s"><u style="height:30%"></u><u style="height:55%"></u><u style="height:40%"></u><u style="height:0"></u><u style="height:0"></u><u style="height:45%"></u><u style="height:75%"></u><u style="height:50%"></u><u style="height:30%"></u><u style="height:0"></u><u style="height:0"></u><u style="height:0"></u><u style="height:40%"></u><u style="height:65%"></u><u style="height:35%"></u><u style="height:20%"></u></div>
+            <small>Letzte Bewegung: vor 12 min</small>
+            <small>Zuletzt online: vor 4 min</small>
+          </div>
+          <span class="fab">+ Gerät</span>
+        </div>
+        <figcaption><b>Alles in der App</b><span>Status und Alarme je Haus. Beispielansicht.</span></figcaption>
       </figure>
     </div>
   </div>
