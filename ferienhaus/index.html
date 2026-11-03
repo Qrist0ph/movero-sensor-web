@@ -40,8 +40,8 @@
  "mainEntity": [
   {"@type":"Question","name":"Braucht das Ferienhaus WLAN oder einen Internetanschluss?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Sensor funkt selbstständig über das Mobilfunknetz (NB-IoT/LTE-M), die SIM-Karte ist bereits eingebaut. Vor Ort brauchen Sie nur eine Steckdose und Mobilfunkempfang."}},
   {"@type":"Question","name":"Wie schnell erfahre ich von einer Bewegung?","acceptedAnswer":{"@type":"Answer","text":"Meist innerhalb von rund einer halben Stunde. Der Sensor sammelt Bewegungen und überträgt sie stromsparend gebündelt. movero-sensor ist deshalb kein Sekunden-Alarm und ersetzt weder eine zertifizierte Alarmanlage noch einen Wachdienst."}},
-  {"@type":"Question","name":"Ist die Party-Erkennung schon verfügbar?","acceptedAnswer":{"@type":"Answer","text":"Noch nicht, sie ist in Entwicklung. Verfügbar sind bereits der Wächter-Alarm und der Bewegungsverlauf, in dem Sie die Aktivität der letzten Tage selbst ansehen können."}},
-  {"@type":"Question","name":"Erkennt der Sensor, wie viele Personen im Haus sind?","acceptedAnswer":{"@type":"Answer","text":"Nein. Er erkennt nur, ob sich im Erfassungsbereich etwas bewegt – nicht wer und nicht wie viele. Auch die geplante Party-Erkennung wird nur einen Hinweis auf ungewöhnlich viel Bewegung zu ungewöhnlichen Zeiten geben, keinen Beweis."}},
+  {"@type":"Question","name":"Erkennt der Sensor eine Party?","acceptedAnswer":{"@type":"Answer","text":"Er meldet einen Party-Verdacht, wenn die Bewegung deutlich über dem Normalwert des Hauses liegt. Das ist ein Hinweis, kein Beweis. Im Bewegungsverlauf können Sie die Aktivität der letzten Tage selbst ansehen."}},
+  {"@type":"Question","name":"Erkennt der Sensor, wie viele Personen im Haus sind?","acceptedAnswer":{"@type":"Answer","text":"Nein. Er erkennt nur, ob sich im Erfassungsbereich etwas bewegt – nicht wer und nicht wie viele. Auch der Party-Verdacht ist nur ein Hinweis auf ungewöhnlich viel Bewegung, kein Beweis."}},
   {"@type":"Question","name":"Muss ich meine Gäste über den Sensor informieren?","acceptedAnswer":{"@type":"Answer","text":"Wir empfehlen es ausdrücklich: im Inserat, in der Hausordnung und vor der Buchung. Bringen Sie den Sensor nur in Gemeinschaftsräumen an, nie in Schlafzimmern oder Bädern, und prüfen Sie die Regeln Ihrer Buchungsplattform. Das ist keine Rechtsberatung."}},
   {"@type":"Question","name":"Was passiert, wenn jemand den Stecker zieht?","acceptedAnswer":{"@type":"Answer","text":"Meldet sich ein Sensor längere Zeit nicht, zeigt die App ihn als offline an. So erkennen Sie, dass der Stecker gezogen wurde, der Strom ausgefallen oder der Empfang gestört ist."}},
   {"@type":"Question","name":"Können Reinigungskraft oder Hausmeister mit auf den Sensor schauen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Sie können einen Sensor für andere Personen freigeben. Diese melden sich mit einem eigenen Konto an. Die Freigabe lässt sich jederzeit wieder entziehen."}},
@@ -346,7 +346,7 @@
     <a class="brand" href="/"><img src="/icon-192.png" alt="movero-sensor" />movero-sensor</a>
     <nav>
       <a href="#waechter">Wächter</a>
-      <a href="#party">Party-Erkennung</a>
+      <a href="#party">Party-Verdacht</a>
       <a href="#agenturen">Für Agenturen</a>
       <a href="#preise">Preise</a>
       <a href="#faq">FAQ</a>
@@ -363,7 +363,7 @@
       <h1>Ein Service mehr für Ihre Eigentümer. Ganz ohne Kamera.</h1>
       <p class="lead">Mit movero-sensor bieten Sie Eigentümern einen Wächter-Service für die Zeit zwischen den Buchungen:
         Bewegt sich im leerstehenden Haus etwas, kommt eine Nachricht aufs Handy. Ohne Kamera, ohne Mikrofon und ohne WLAN vor Ort.
-        Funktioniert europaweit.</p>
+        Funktioniert europaweit. Liegt die Bewegung deutlich über dem Normalwert des Hauses, meldet movero-sensor einen Party-Verdacht.</p>
       <div class="cta">
         <a class="btn pri" href="#kontakt">Kontakt aufnehmen</a>
         <a class="btn" href="#preise">Preise ansehen</a>
@@ -442,7 +442,7 @@
         <div class="stand"></div>
         <div class="foot"></div>
       </div>
-      <figcaption><b>Alle Häuser auf einem Bildschirm</b><span>Das Live-Dashboard im Browser. Beispielansicht mit erfundenen Objekten.</span></figcaption>
+      <figcaption><b>Alle Häuser auf einem Bildschirm</b><span>Das Live-Dashboard im Browser.</span></figcaption>
     </figure>
   </div>
 </section>
@@ -535,13 +535,13 @@
   <div class="wrap split">
     <div>
       <div class="shead">
-        <span class="eyebrow">Party-Erkennung</span><span class="tag">In Entwicklung</span>
+        <span class="eyebrow">Party-Verdacht</span>
         <h2>Ein Hinweis, wenn die Nacht nicht nach Urlaub aussieht</h2>
-        <p>Eine Urlaubsnacht wird irgendwann ruhig. Bleibt die Bewegung im Gemeinschaftsraum dagegen über Stunden
-           hoch, soll movero-sensor Ihnen künftig einen Hinweis geben. Dann können Sie selbst entscheiden, ob Sie anrufen.</p>
+        <p>Eine Urlaubsnacht wird irgendwann ruhig. Liegt die Bewegung im Gemeinschaftsraum dagegen deutlich über dem
+           Normalwert des Hauses, meldet movero-sensor einen Party-Verdacht. Dann können Sie selbst entscheiden, ob Sie anrufen.</p>
       </div>
       <ul class="ticks">
-        <li><b>Schon heute: der Bewegungsverlauf</b><span>In der App sehen Sie die Aktivität der letzten Tage und können Auffälligkeiten selbst einschätzen.</span></li>
+        <li><b>Dazu der Bewegungsverlauf</b><span>In der App sehen Sie die Aktivität der letzten Tage und können Auffälligkeiten selbst einschätzen.</span></li>
         <li><b>Nur Bewegung</b><span>Keine Lautstärke, keine Bilder. Der Sensor kann Personen weder zählen noch erkennen.</span></li>
         <li><b>Ein Hinweis, kein Beweis</b><span>Auch eine lange Spielerunde kann so aussehen. Sprechen Sie zuerst mit Ihren Gästen.</span></li>
       </ul>
@@ -657,8 +657,8 @@
     <div class="faq">
       <details><summary>Braucht das Ferienhaus WLAN oder einen Internetanschluss?</summary><p>Nein. Der Sensor funkt selbstständig über das Mobilfunknetz (NB-IoT/LTE-M), die SIM-Karte ist bereits eingebaut. Vor Ort brauchen Sie nur eine Steckdose und Mobilfunkempfang.</p></details>
       <details><summary>Wie schnell erfahre ich von einer Bewegung?</summary><p>Meist innerhalb von rund einer halben Stunde. Der Sensor sammelt Bewegungen und überträgt sie stromsparend gebündelt. movero-sensor ist deshalb kein Sekunden-Alarm und ersetzt weder eine zertifizierte Alarmanlage noch einen Wachdienst.</p></details>
-      <details><summary>Ist die Party-Erkennung schon verfügbar?</summary><p>Noch nicht, sie ist in Entwicklung. Verfügbar sind bereits der Wächter-Alarm und der Bewegungsverlauf, in dem Sie die Aktivität der letzten Tage selbst ansehen können.</p></details>
-      <details><summary>Erkennt der Sensor, wie viele Personen im Haus sind?</summary><p>Nein. Er erkennt nur, ob sich im Erfassungsbereich etwas bewegt – nicht wer und nicht wie viele. Auch die geplante Party-Erkennung wird nur einen Hinweis auf ungewöhnlich viel Bewegung zu ungewöhnlichen Zeiten geben, keinen Beweis.</p></details>
+      <details><summary>Erkennt der Sensor eine Party?</summary><p>Er meldet einen Party-Verdacht, wenn die Bewegung deutlich über dem Normalwert des Hauses liegt. Das ist ein Hinweis, kein Beweis. Im Bewegungsverlauf können Sie die Aktivität der letzten Tage selbst ansehen.</p></details>
+      <details><summary>Erkennt der Sensor, wie viele Personen im Haus sind?</summary><p>Nein. Er erkennt nur, ob sich im Erfassungsbereich etwas bewegt – nicht wer und nicht wie viele. Auch der Party-Verdacht ist nur ein Hinweis auf ungewöhnlich viel Bewegung, kein Beweis.</p></details>
       <details><summary>Muss ich meine Gäste über den Sensor informieren?</summary><p>Wir empfehlen es ausdrücklich: im Inserat, in der Hausordnung und vor der Buchung. Bringen Sie den Sensor nur in Gemeinschaftsräumen an, nie in Schlafzimmern oder Bädern, und prüfen Sie die Regeln Ihrer Buchungsplattform. Das ist keine Rechtsberatung.</p></details>
       <details><summary>Was passiert, wenn jemand den Stecker zieht?</summary><p>Meldet sich ein Sensor längere Zeit nicht, zeigt die App ihn als offline an. So erkennen Sie, dass der Stecker gezogen wurde, der Strom ausgefallen oder der Empfang gestört ist.</p></details>
       <details><summary>Können Reinigungskraft oder Hausmeister mit auf den Sensor schauen?</summary><p>Ja. Sie können einen Sensor für andere Personen freigeben. Diese melden sich mit einem eigenen Konto an. Die Freigabe lässt sich jederzeit wieder entziehen.</p></details>
