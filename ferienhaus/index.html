@@ -27,9 +27,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <meta name="theme-color" content="#ffffff" />
-<title>movero-sensor für Ferienhäuser — Wächter-Alarm ohne Kamera und ohne WLAN</title>
-<meta name="description" content="movero-sensor für Ferienhaus-Besitzer und Agenturen: meldet Bewegung im leerstehenden Haus per Push – ohne Kamera, ohne Mikrofon, ohne WLAN vor Ort. Hinweis auf auffällige Nachtaktivität in Entwicklung." />
-<meta property="og:title" content="movero-sensor für Ferienhäuser — Ihr Haus im Blick, ohne Kamera." />
+<title>movero-sensor für Ferienhaus-Agenturen — Wächter-Service für Ihre Eigentümer</title>
+<meta name="description" content="movero-sensor für Ferienhaus-Agenturen und Hausverwalter: ein zusätzlicher Service für Ihre Eigentümer. Meldet Bewegung im leerstehenden Haus per Push – ohne Kamera, ohne Mikrofon, ohne WLAN vor Ort. Staffelpreise ab 2 Sensoren." />
+<meta property="og:title" content="movero-sensor für Ferienhaus-Agenturen — ein Service mehr für Ihre Eigentümer." />
 <meta property="og:description" content="Wächter-Alarm für die Zeit zwischen den Buchungen. Keine Kamera, kein Mikrofon, kein WLAN vor Ort nötig." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://movero-sensor.de/ferienhaus-hero.jpg" />
@@ -96,7 +96,7 @@
   .status span { color:var(--muted); }
 
   /* facts */
-  .facts { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line); border-radius:18px; margin-bottom:12px; }
+  .facts { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line); border-radius:18px; margin-bottom:56px; }
   .facts div { padding:18px 22px; border-left:1px solid var(--line); }
   .facts div:first-child { border-left:0; }
   .facts b { display:block; font-size:16px; }
@@ -140,6 +140,56 @@
   .pc .s u { flex:1; background:#60b5f5; border-radius:1px; text-decoration:none; }
   .pc small { display:block; color:#a3b3c2; font-size:11.5px; }
   .phone .fab { display:block; width:max-content; margin:10px 0 0 auto; padding:7px 14px; background:#285a8c; border-radius:12px; font-size:12.5px; }
+
+  /* agency monitor mockup, modelled on the live dashboard at app.movero-sensor.de */
+  .desk { margin:48px 0 0; }
+  .monitor { max-width:1100px; margin:0 auto; }
+  .screen { background:#0f1419; border:10px solid #222; border-radius:16px; color:#e7edf3; font-size:12.5px; line-height:1.4; overflow:hidden; }
+  .chrome { display:flex; align-items:center; gap:6px; padding:8px 14px; background:#1b2430; }
+  .chrome i { width:9px; height:9px; border-radius:50%; background:#3d4b5c; flex:none; }
+  .chrome span { margin-left:10px; padding:2px 12px; border-radius:999px; background:#0f1419; color:#8aa0b2; font-size:12px; }
+  .dbh { display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 12px; padding:14px 20px; border-bottom:1px solid #243040; }
+  .dbh b { font-size:17px; }
+  .dbh span { color:#8aa0b2; }
+  .dbh em { margin-left:auto; font-style:normal; color:#8aa0b2; font-size:12px; }
+  .dbf { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:12px 20px 0; }
+  .seg { display:inline-flex; border:1px solid #243040; border-radius:8px; overflow:hidden; }
+  .seg span { padding:4px 11px; color:#8aa0b2; }
+  .seg span + span { border-left:1px solid #243040; }
+  .seg .on { background:#243040; color:#e7edf3; font-weight:600; }
+  .dbf .find { border:1px solid #243040; border-radius:8px; padding:4px 11px; min-width:150px; color:#8aa0b2; background:#1b2430; }
+  .dbf .n { margin-left:auto; color:#8aa0b2; font-size:12px; }
+  .dbg { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:12px 20px 20px; }
+  .tile { background:#1b2430; border:1px solid #243040; border-radius:11px; padding:11px 12px; min-width:0; }
+  .tile .top { display:flex; align-items:center; gap:6px; }
+  .tile .name { font-weight:600; font-size:13.5px; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pill { margin-left:auto; flex:none; padding:1px 7px; border-radius:999px; font-size:10px; font-weight:600; letter-spacing:.3px; }
+  .pill.ok { background:rgba(52,211,153,.15); color:#34d399; }
+  .pill.al { background:rgba(248,113,113,.15); color:#f87171; }
+  .pill.offline { background:rgba(100,116,139,.18); color:#8aa0b2; }
+  .since { display:flex; align-items:baseline; gap:6px; margin:5px 0 7px; }
+  .since span { color:#8aa0b2; font-size:10.5px; }
+  .since b { color:#34d399; font-weight:600; }
+  .kp { display:grid; grid-template-columns:1fr 1fr; gap:5px 8px; margin-bottom:7px; }
+  .kp span { display:block; color:#8aa0b2; font-size:10.5px; }
+  .kp b { font-weight:600; white-space:nowrap; }
+  .kp b.stale { color:#f87171; }
+  .sig { display:inline-flex; align-items:flex-end; gap:1px; height:10px; margin-right:3px; }
+  .sig i { width:2.5px; background:#3a4a5c; border-radius:1px; }
+  .sig i:nth-child(1){height:3px} .sig i:nth-child(2){height:5px} .sig i:nth-child(3){height:8px} .sig i:nth-child(4){height:10px}
+  .sig.s4 i, .sig.s3 i:nth-child(-n+3) { background:#34d399; }
+  .sig.s2 i:nth-child(-n+2) { background:#d8a138; }
+  .mode { color:#8aa0b2; font-size:11.5px; margin-bottom:7px; }
+  .mode b { color:#e7edf3; font-weight:600; }
+  .spark { display:flex; align-items:flex-end; gap:1px; height:38px; background:#10171f; border-radius:6px; padding:5px; }
+  .spark u { flex:1; min-height:2px; background:#38bdf8; border-radius:1px 1px 0 0; opacity:.85; text-decoration:none; }
+  .spark u.z { background:#243040; opacity:.6; }
+  .spark u.h { background:#f87171; opacity:1; }
+  .stand { width:120px; height:34px; margin:0 auto; background:#d0d0d0; clip-path:polygon(18% 0,82% 0,100% 100%,0 100%); }
+  .foot { width:230px; height:9px; margin:0 auto; background:#bdbdbd; border-radius:6px 6px 2px 2px; }
+  .desk figcaption { text-align:center; margin-top:16px; }
+  .desk figcaption b { display:block; font-size:17px; }
+  .desk figcaption span { color:var(--muted); font-size:15px; }
 
   /* split sections */
   .split { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
@@ -201,6 +251,17 @@
   .faq details[open] summary::after { content:"–"; }
   .faq p { margin:0; padding:0 44px 20px 0; color:var(--muted); }
 
+  /* pricing */
+  .plans { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .plan { background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 22px; display:flex; flex-direction:column; min-width:0; }
+  .plan h3 { margin:0; font-size:19px; }
+  .plan .for { color:var(--muted); font-size:15px; margin:2px 0 0; }
+  .plan .price { font-size:36px; }
+  .plan .price small { display:block; font-size:15px; margin-top:2px; }
+  .plan .plus { margin:4px 0 0; }
+  .plan .ex { color:var(--muted); font-size:14.5px; margin:16px 0 20px; padding-top:14px; border-top:1px solid var(--line); }
+  .plan .btn { margin-top:auto; text-align:center; }
+
   /* form */
   .order { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
   .order > * { min-width:0; }
@@ -244,6 +305,9 @@
     .facts div:nth-child(3) { border-left:0; }
     .facts div:nth-child(n+3) { border-top:1px solid var(--line); }
     .cards, .tech { grid-template-columns:1fr; }
+    .dbg { grid-template-columns:repeat(3,1fr); }
+    .dbf .find, .dbf .sort { display:none; }
+    .plans { grid-template-columns:1fr 1fr; }
     .steps { grid-template-columns:1fr 1fr; }
   }
   @media (max-width:640px){
@@ -252,8 +316,19 @@
     section.sec { padding:52px 0; }
     header nav .btn:not(.pri) { display:none; }
     .feats { grid-template-columns:1fr; }
+    .screen { border-width:6px; border-radius:12px; }
+    .dbh { padding:10px 12px; }
+    .dbh span, .dbh em { display:none; }
+    .dbf { padding:10px 12px 0; }
+    .dbg { grid-template-columns:1fr 1fr; gap:8px; padding:10px 12px 12px; }
+    .tile { padding:9px; }
+    .tile:nth-child(n+5) { display:none; }
+    .kp > div:nth-child(odd) { display:none; }
+    .kp { grid-template-columns:1fr; }
+    .stand { width:70px; height:20px; }
+    .foot { width:140px; height:6px; }
     .mk { width:22px; height:22px; font-size:12px; }
-    .profiles, form .row { grid-template-columns:1fr; }
+    .profiles, form .row, .plans { grid-template-columns:1fr; }
     .steps { grid-template-columns:1fr; }
     .facts div { padding:14px 16px; }
     .hero .cta .btn { flex:1 1 100%; text-align:center; }
@@ -270,9 +345,10 @@
       <a href="#waechter">Wächter</a>
       <a href="#party">Party-Erkennung</a>
       <a href="#agenturen">Für Agenturen</a>
+      <a href="#preise">Preise</a>
       <a href="#faq">FAQ</a>
       <a class="btn" href="https://app.movero-sensor.de">Zur App</a>
-      <a class="btn pri" href="#vorbestellen">Vorbestellen</a>
+      <a class="btn pri" href="#kontakt">Kontakt</a>
     </nav>
   </div>
 </header>
@@ -280,15 +356,16 @@
 <section class="hero">
   <div class="wrap inner">
     <div>
-      <span class="eyebrow">Für Ferienhaus-Besitzer &amp; Agenturen</span>
-      <h1>Ihr Ferienhaus im Blick. Ganz ohne Kamera.</h1>
-      <p class="lead">movero-sensor meldet Ihnen, wenn sich im leerstehenden Haus etwas bewegt – auch hunderte Kilometer
-        entfernt. Ohne Kamera, ohne Mikrofon und ohne WLAN vor Ort. Funktioniert europaweit.</p>
+      <span class="eyebrow">Für Ferienhaus-Agenturen &amp; Hausverwalter</span>
+      <h1>Ein Service mehr für Ihre Eigentümer. Ganz ohne Kamera.</h1>
+      <p class="lead">Mit movero-sensor bieten Sie Eigentümern einen Wächter-Service für die Zeit zwischen den Buchungen:
+        Bewegt sich im leerstehenden Haus etwas, kommt eine Nachricht aufs Handy. Ohne Kamera, ohne Mikrofon und ohne WLAN vor Ort.
+        Funktioniert europaweit.</p>
       <div class="cta">
-        <a class="btn pri" href="#vorbestellen">Jetzt vorbestellen · 99 €</a>
-        <a class="btn" href="#so">So funktioniert's</a>
+        <a class="btn pri" href="#kontakt">Kontakt aufnehmen</a>
+        <a class="btn" href="#preise">Preise ansehen</a>
       </div>
-      <p class="note">99 € + 8,99 €/Monat je Sensor inkl. Mobilfunk · Unverbindlich und kostenlos vorbestellen</p>
+      <p class="note">99 € + 8,99 €/Monat je Sensor inkl. Mobilfunk · Staffelpreise ab 2 Sensoren</p>
     </div>
     <figure class="pic">
       <picture>
@@ -309,6 +386,63 @@
     <div><b>Server in Deutschland</b><span>Konto jederzeit löschbar</span></div>
   </div>
 </div>
+
+<section class="sec alt" id="agenturen">
+  <div class="wrap split">
+    <picture>
+      <source srcset="/ferienhaus-agentur.webp" type="image/webp" />
+      <img class="photo" src="/ferienhaus-agentur.jpg" width="1200" height="896" loading="lazy"
+           alt="Jemand aus einer Ferienhaus-Agentur schaut im hellen Büro aufs Smartphone, im Hintergrund hängen Schlüssel an einem Board." />
+    </picture>
+    <div>
+      <div class="shead">
+        <span class="eyebrow">Ihr zusätzlicher Service</span>
+        <h2>Mehr Überblick für Eigentümer, alle Objekte auf einen Blick</h2>
+        <p>Eigentümer wollen wissen, was in ihrem Haus los ist, wenn keine Gäste da sind. Sie brauchen dafür weder Zugang zum WLAN der Eigentümer noch einen Termin mit einem Techniker.</p>
+      </div>
+      <ul class="ticks">
+        <li><b>Ein Service für Ihre Eigentümer</b><span>Sie entscheiden, ob und zu welchen Konditionen Sie den Wächter-Service an Ihre Eigentümer weitergeben.</span></li>
+        <li><b>Ein Konto, viele Sensoren</b><span>Jeder Sensor bekommt einen eigenen Namen und eigene Alarm-Regeln.</span></li>
+        <li><b>Gemeinsam im Team</b><span>Geben Sie Sensoren für Kollegen, Hausmeister oder Eigentümer frei und entziehen Sie die Freigabe jederzeit wieder.</span></li>
+        <li><b>Übersicht nach letzter Bewegung</b><span>Status und Verlauf je Objekt, per Android-App oder im Browser.</span></li>
+      </ul>
+      <p class="fine"><a class="btn pri" href="#kontakt">Kontakt aufnehmen</a></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <figure class="desk">
+      <div class="monitor" role="img" aria-label="Beispielansicht des Live-Dashboards auf einem Monitor: zwölf Ferienhäuser in einem Konto. Haus am See meldet einen Alarm, das Alte Forsthaus ist offline, die übrigen zehn Häuser zeigen OK.">
+        <div class="screen">
+          <div class="chrome"><i></i><i></i><i></i><span>app.movero-sensor.de</span></div>
+          <div class="dbh"><b>movero-sensor</b><span>Hallo Agentur-Team</span><em>live</em></div>
+          <div class="dbf">
+            <div class="seg"><span class="on">Alle</span><span>Nur online</span><span>Nur offline</span></div>
+            <div class="find">Nach Namen suchen…</div>
+            <div class="seg sort"><span class="on">Feste Reihenfolge</span><span>Zuletzt Bewegung</span></div>
+            <span class="n">12 Ferienhäuser</span>
+          </div>
+          <div class="dbg">
+            <div class="tile"><div class="top"><span class="name">Haus am See</span><span class="pill al">ALARM</span></div><div class="since"><span>seit letzter Aktivität</span><b>8 min</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s3"><i></i><i></i><i></i><i></i></i>gut</b></div><div><span>Bewegung heute</span><b>14 min</b></div><div><span>Bewegung 24 h</span><b>14 min</b></div><div><span>Letzte Meldung</span><b>vor 3 min</b></div></div><div class="mode">Modus: <b>aktiv 22:00–07:00</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="h" style="height:90%"></u><u class="h" style="height:90%"></u><u class="z"></u><u class="h" style="height:90%"></u><u class="h" style="height:90%"></u><u class="h" style="height:90%"></u><u class="h" style="height:90%"></u><u class="z"></u><u class="h" style="height:90%"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Altes Forsthaus</span><span class="pill offline">OFFLINE</span></div><div class="since"><span>seit letzter Aktivität</span><b>5 Tage</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s2"><i></i><i></i><i></i><i></i></i>ausreichend</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>0 s</b></div><div><span>Letzte Meldung</span><b class="stale">vor 2 Tagen</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Chalet am Hang</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>12 min</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s4"><i></i><i></i><i></i><i></i></i>sehr gut</b></div><div><span>Bewegung heute</span><b>2 h 41 min</b></div><div><span>Bewegung 24 h</span><b>4 h 5 min</b></div><div><span>Letzte Meldung</span><b>vor 4 min</b></div></div><div class="mode">Modus: <b>kein Alarm</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u style="height:40%"></u><u style="height:60%"></u><u style="height:50%"></u><u class="z"></u><u style="height:30%"></u><u style="height:80%"></u><u class="z"></u><u style="height:40%"></u><u style="height:70%"></u><u class="z"></u><u style="height:60%"></u><u class="z"></u><u style="height:30%"></u><u class="z"></u><u class="z"></u><u style="height:50%"></u><u style="height:70%"></u><u class="z"></u><u style="height:40%"></u><u class="z"></u><u style="height:60%"></u><u style="height:80%"></u><u class="z"></u><u style="height:30%"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Eifelblick</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>26 min</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s3"><i></i><i></i><i></i><i></i></i>gut</b></div><div><span>Bewegung heute</span><b>1 h 12 min</b></div><div><span>Bewegung 24 h</span><b>3 h 38 min</b></div><div><span>Letzte Meldung</span><b>vor 9 min</b></div></div><div class="mode">Modus: <b>kein Alarm</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u style="height:40%"></u><u style="height:70%"></u><u class="z"></u><u style="height:30%"></u><u class="z"></u><u style="height:50%"></u><u class="z"></u><u class="z"></u><u style="height:60%"></u><u class="z"></u><u style="height:40%"></u><u class="z"></u><u style="height:30%"></u><u style="height:70%"></u><u class="z"></u><u class="z"></u><u style="height:50%"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Landhaus am Maar</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>2 Std.</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s2"><i></i><i></i><i></i><i></i></i>ausreichend</b></div><div><span>Bewegung heute</span><b>22 min</b></div><div><span>Bewegung 24 h</span><b>2 h 50 min</b></div><div><span>Letzte Meldung</span><b>vor 6 min</b></div></div><div class="mode">Modus: <b>kein Alarm</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Hof am Bach</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>1 Tag</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s3"><i></i><i></i><i></i><i></i></i>gut</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>9 min</b></div><div><span>Letzte Meldung</span><b>vor 11 min</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Haus Sonnenhang</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>2 Tage</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s4"><i></i><i></i><i></i><i></i></i>sehr gut</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>0 s</b></div><div><span>Letzte Meldung</span><b>vor 3 min</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Waldhütte</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>2 Tage</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s2"><i></i><i></i><i></i><i></i></i>ausreichend</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>0 s</b></div><div><span>Letzte Meldung</span><b>vor 14 min</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Haus an der Küste</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>3 Tage</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s3"><i></i><i></i><i></i><i></i></i>gut</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>0 s</b></div><div><span>Letzte Meldung</span><b>vor 7 min</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Fewo Alte Mühle</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>4 Tage</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s3"><i></i><i></i><i></i><i></i></i>gut</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>0 s</b></div><div><span>Letzte Meldung</span><b>vor 2 min</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Bergchalet</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>6 Tage</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s4"><i></i><i></i><i></i><i></i></i>sehr gut</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>0 s</b></div><div><span>Letzte Meldung</span><b>vor 17 min</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+            <div class="tile"><div class="top"><span class="name">Seeblick Nord</span><span class="pill ok">OK</span></div><div class="since"><span>seit letzter Aktivität</span><b>8 Tage</b></div><div class="kp"><div><span>Empfang</span><b><i class="sig s3"><i></i><i></i><i></i><i></i></i>gut</b></div><div><span>Bewegung heute</span><b>0 s</b></div><div><span>Bewegung 24 h</span><b>0 s</b></div><div><span>Letzte Meldung</span><b>vor 5 min</b></div></div><div class="mode">Modus: <b>aktiv 00:00–23:59</b></div><div class="spark"><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u><u class="z"></u></div></div>
+          </div>
+        </div>
+        <div class="stand"></div>
+        <div class="foot"></div>
+      </div>
+      <figcaption><b>Alle Häuser auf einem Bildschirm</b><span>Das Live-Dashboard im Browser. Beispielansicht mit erfundenen Objekten.</span></figcaption>
+    </figure>
+  </div>
+</section>
 
 <section class="sec">
   <div class="wrap">
@@ -435,31 +569,7 @@
   </div>
 </section>
 
-<section class="sec alt" id="agenturen">
-  <div class="wrap split">
-    <picture>
-      <source srcset="/ferienhaus-agentur.webp" type="image/webp" />
-      <img class="photo" src="/ferienhaus-agentur.jpg" width="1200" height="896" loading="lazy"
-           alt="Jemand aus einer Ferienhaus-Agentur schaut im hellen Büro aufs Smartphone, im Hintergrund hängen Schlüssel an einem Board." />
-    </picture>
-    <div>
-      <div class="shead">
-        <span class="eyebrow">Für Agenturen &amp; Hausverwalter</span>
-        <h2>Alle Objekte auf einen Blick</h2>
-        <p>Betreuen Sie mehrere Häuser? Dann brauchen Sie weder Zugang zum WLAN der Eigentümer noch einen Termin mit einem Techniker.</p>
-      </div>
-      <ul class="ticks">
-        <li><b>Ein Konto, viele Sensoren</b><span>Jeder Sensor bekommt einen eigenen Namen und eigene Alarm-Regeln.</span></li>
-        <li><b>Gemeinsam im Team</b><span>Geben Sie Sensoren für Kollegen, Hausmeister oder Eigentümer frei und entziehen Sie die Freigabe jederzeit wieder.</span></li>
-        <li><b>Übersicht nach letzter Bewegung</b><span>Status und Verlauf je Objekt, per Android-App oder im Browser.</span></li>
-      </ul>
-      <p class="fine">Sie planen mehrere Objekte? Schreiben Sie uns an
-        <a href="mailto:support@movero-sensor.de" style="text-decoration:underline">support@movero-sensor.de</a>.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="gaeste">
+<section class="sec alt" id="gaeste">
   <div class="wrap">
     <div class="shead">
       <span class="eyebrow">Fair zu Ihren Gästen</span>
@@ -475,7 +585,7 @@
   </div>
 </section>
 
-<section class="sec alt" id="so">
+<section class="sec" id="so">
   <div class="wrap">
     <div class="shead">
       <span class="eyebrow">In 4 Schritten startklar</span>
@@ -487,6 +597,51 @@
       <div class="step"><h3>Einstellen</h3><p>Objekt benennen, Zeitfenster wählen und auf Wunsch das Team einladen.</p></div>
       <div class="step"><h3>Entspannen</h3><p>Die App meldet sich, wenn sich etwas tut. Sonst bleibt es ruhig.</p></div>
     </div>
+  </div>
+</section>
+
+<section class="sec alt" id="preise">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Preise</span>
+      <h2>Je mehr Objekte, desto günstiger der Sensor</h2>
+      <p>Im Monatspreis sind Mobilfunk, App und Benachrichtigungen enthalten.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <h3>1 Sensor</h3>
+        <p class="for">Für ein einzelnes Haus</p>
+        <div class="price">99 € <small>einmalig je Sensor</small></div>
+        <div class="plus">+ <b>8,99 € im Monat</b> je Sensor</div>
+        <p class="ex">Der reguläre Preis ohne Staffel</p>
+        <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
+      </div>
+      <div class="plan">
+        <h3>2 bis 3 Sensoren</h3>
+        <p class="for">Für den Einstieg</p>
+        <div class="price">89 € <small>einmalig je Sensor</small></div>
+        <div class="plus">+ <b>7,99 € im Monat</b> je Sensor</div>
+        <p class="ex">Beispiel 3 Sensoren: 267 € einmalig + 23,97 € im Monat</p>
+        <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
+      </div>
+      <div class="plan">
+        <h3>4 bis 15 Sensoren</h3>
+        <p class="for">Für kleine Agenturen</p>
+        <div class="price">79 € <small>einmalig je Sensor</small></div>
+        <div class="plus">+ <b>6,99 € im Monat</b> je Sensor</div>
+        <p class="ex">Beispiel 10 Sensoren: 790 € einmalig + 69,90 € im Monat</p>
+        <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
+      </div>
+      <div class="plan">
+        <h3>Mehr als 15 Sensoren</h3>
+        <p class="for">Für größere Bestände</p>
+        <div class="price">69 € <small>einmalig je Sensor</small></div>
+        <div class="plus">+ <b>5,99 € im Monat</b> je Sensor</div>
+        <p class="ex">Beispiel 30 Sensoren: 2.070 € einmalig + 179,70 € im Monat</p>
+        <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
+      </div>
+    </div>
+    <p class="fine">Alle Preise inkl. MwSt. Der Staffelpreis gilt für alle Sensoren eines Kontos.</p>
   </div>
 </section>
 
@@ -509,38 +664,33 @@
   </div>
 </section>
 
-<section class="sec alt" id="vorbestellen">
+<section class="sec alt" id="kontakt">
   <div class="wrap order">
     <div>
       <div class="shead" style="margin-bottom:0">
-        <span class="eyebrow">Unverbindlich vorbestellen</span>
-        <h2>Sichern Sie sich Ihren Sensor fürs Ferienhaus</h2>
+        <span class="eyebrow">Kontakt</span>
+        <h2>Sprechen wir über Ihre Objekte</h2>
+        <p>Schreiben Sie uns kurz, wie viele Häuser Sie betreuen. Wir melden uns per E-Mail bei Ihnen und nennen Ihnen auch den aktuellen Liefertermin.</p>
       </div>
-      <div class="price">99 € <small>einmalig je Sensor</small></div>
-      <div class="plus">+ <b>8,99 € im Monat</b> für Mobilfunk, App &amp; Benachrichtigungen</div>
-      <p class="fine">Preise inkl. MwSt. Die Vorbestellung ist unverbindlich und kostenlos: Wir melden uns per E-Mail,
-        sobald Ihr Sensor lieferbar ist. Erst dann entscheiden Sie, ob Sie kaufen.</p>
+      <p class="fine">Lieber direkt? <a href="mailto:support@movero-sensor.de" style="text-decoration:underline">support@movero-sensor.de</a></p>
     </div>
     <form class="card" method="post" action="https://app.movero-sensor.de/api/public/interest">
-      <div class="radio" role="radiogroup" aria-label="Art der Anfrage">
-        <label><input type="radio" name="art" value="vorbestellung" checked /> Unverbindlich vorbestellen</label>
-        <label><input type="radio" name="art" value="interesse" /> Nur informiert werden</label>
-      </div>
+      <input type="hidden" name="art" value="interesse" />
       <div class="row">
         <label>Name <input name="name" autocomplete="name" maxlength="120" /></label>
         <label>Anzahl Sensoren
-          <select name="anzahl"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5 oder mehr</option></select></label>
+          <select name="anzahl"><option value="1">1</option><option value="3">2 bis 3</option><option value="15">4 bis 15</option><option value="16">Mehr als 15</option></select></label>
       </div>
       <label>E-Mail-Adresse * <input type="email" name="email" required autocomplete="email" maxlength="120" /></label>
       <label>Nachricht (optional)
-        <textarea name="nachricht" rows="3" maxlength="500" placeholder="z. B. privat oder Agentur, Anzahl Objekte"></textarea></label>
+        <textarea name="nachricht" rows="3" maxlength="500" placeholder="z. B. Name der Agentur, Region, Anzahl Objekte"></textarea></label>
       <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off" /></label></div>
       <input type="hidden" name="utm_source" /><input type="hidden" name="utm_campaign" value="ferienhaus" /><input type="hidden" name="gclid" />
       <label class="consent"><input type="checkbox" required />
         <span>Ich bin einverstanden, dass die yaico GmbH meine Angaben speichert, um mich zu movero-sensor zu
         kontaktieren. Widerruf jederzeit per E-Mail an support@movero-sensor.de.
         <a href="https://app.movero-sensor.de/datenschutz">Datenschutzerklärung</a></span></label>
-      <button class="btn pri" type="submit">Jetzt unverbindlich vorbestellen</button>
+      <button class="btn pri" type="submit">Kontakt aufnehmen</button>
       <p class="disc">movero-sensor ersetzt keine zertifizierte Alarmanlage und keinen Wachdienst.</p>
     </form>
   </div>
