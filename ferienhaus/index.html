@@ -196,6 +196,39 @@
   .desk figcaption b { display:block; font-size:17px; }
   .desk figcaption span { color:var(--muted); font-size:15px; }
 
+  /* AI assistant (MCP) chat mockup */
+  .ai { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; margin-top:80px; }
+  .ai > * { min-width:0; }
+  .ai .shead { margin-bottom:20px; }
+  .chatfig { margin:0; }
+  .chat { background:#fff; border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; font-size:15px; line-height:1.5; }
+  .chat-h { display:flex; align-items:center; gap:10px; padding:14px 20px; border-bottom:1px solid var(--line); }
+  .chat-h b { font-size:16px; }
+  .chat-h span { margin-left:auto; display:flex; align-items:center; gap:6px; color:var(--ok); font-size:13px; font-weight:600; }
+  .chat-h span i { width:8px; height:8px; border-radius:50%; background:var(--ok); }
+  .chat-b { display:flex; flex-direction:column; gap:12px; padding:18px 20px; background:var(--soft); }
+  .msg { max-width:88%; border-radius:16px; padding:11px 15px; }
+  .msg p { margin:0; }
+  .msg.u { align-self:flex-end; background:var(--ink); color:#fff; border-bottom-right-radius:5px; }
+  .msg.a { align-self:flex-start; background:#fff; border:1px solid var(--line); border-bottom-left-radius:5px; }
+  .msg.auto { align-self:stretch; max-width:none; background:var(--accent-soft); border:1px solid #f6c9d1; }
+  .msg.auto small { display:block; color:var(--accent-d); font-size:12.5px; font-weight:600; margin-bottom:2px; }
+  .tool { align-self:flex-start; font-size:12.5px; color:var(--muted); background:#fff; border:1px dashed #c9c9c9; border-radius:999px; padding:3px 12px; }
+  .chk { list-style:none; margin:8px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .chk li { position:relative; padding-left:26px; }
+  .chk li::before { position:absolute; left:0; top:2px; width:18px; height:18px; border-radius:50%; font-size:11px; font-weight:700;
+                    display:flex; align-items:center; justify-content:center; }
+  .chk li.ok::before { content:"✓"; background:var(--ok-soft); color:var(--ok); }
+  .chk li.warn::before { content:"!"; background:#fdf1dc; color:#9a5b00; }
+  .chk b { display:block; font-size:14.5px; }
+  .chk span { color:var(--muted); font-size:14px; }
+  .chat-in { display:flex; align-items:center; gap:10px; margin:12px 16px; padding:10px 10px 10px 16px; border:1px solid var(--line); border-radius:14px; color:#8a8a8a; font-size:14.5px; }
+  .chat-in i { margin-left:auto; width:30px; height:30px; border-radius:9px; background:var(--accent); color:#fff; font-style:normal; font-weight:700;
+               display:flex; align-items:center; justify-content:center; }
+  .chatfig figcaption { text-align:center; margin-top:16px; }
+  .chatfig figcaption b { display:block; font-size:17px; }
+  .chatfig figcaption span { color:var(--muted); font-size:15px; }
+
   /* history mockup, modelled on the device page of the app */
   .hv { display:grid; grid-template-columns:1.1fr 1fr; gap:24px; background:#1b2430; color:#e7edf3; border-radius:20px; padding:24px; margin:24px 0 0; }
   .hv > div { min-width:0; }
@@ -327,7 +360,8 @@
 
   @media (max-width:960px){
     header nav a:not(.btn) { display:none; }
-    .hero .inner, .split, .order { grid-template-columns:1fr; gap:32px; }
+    .hero .inner, .split, .order, .ai { grid-template-columns:1fr; gap:32px; }
+    .ai { margin-top:56px; }
     .hero .inner { padding-top:28px; padding-bottom:36px; }
     .hero .pic { order:-1; }
     .facts { grid-template-columns:1fr 1fr; }
@@ -345,6 +379,8 @@
     section.sec { padding:52px 0; }
     header nav .btn:not(.pri) { display:none; }
     .feats { grid-template-columns:1fr; }
+    .chat-b { padding:14px 12px; }
+    .msg { max-width:94%; }
     .hv { padding:16px; }
     .screen { border-width:6px; border-radius:12px; }
     .dbh { padding:10px 12px; }
@@ -488,6 +524,42 @@
         <div class="foot"></div>
       </div>
       <figcaption><b>Alle Häuser auf einem Bildschirm</b><span>Das Live-Dashboard im Browser.</span></figcaption>
+    </figure>
+  </div>
+  <div class="wrap ai" id="ki-assistent">
+    <div>
+      <div class="shead">
+        <span class="eyebrow">Neu: movero im KI-Assistenten</span>
+        <h2>Ihr KI-Assistent behält die Häuser im Blick</h2>
+        <p>Verbinden Sie movero mit einem KI-Assistenten wie Claude. Er liest die Sensoren Ihres Kontos und beantwortet Fragen in normaler Sprache. Auf Wunsch prüft er die Häuser regelmäßig von selbst.</p>
+      </div>
+      <ul class="ticks">
+        <li><b>Check-out und Check-in prüfen</b><span>Nennen Sie die An- und Abreisen des Tages. Der Assistent sagt Ihnen, in welchem Haus seit der Abreise Ruhe ist und wo die neuen Gäste schon angekommen sind.</span></li>
+        <li><b>Offline-Sensoren automatisch melden</b><span>Meldet sich ein Sensor nicht mehr, etwa weil der Stecker gezogen wurde, informiert der Assistent Sie oder Ihren Hausmeister. Er nutzt dafür die Kanäle, die Sie ihm freigegeben haben, zum Beispiel E-Mail.</span></li>
+        <li><b>Fragen statt suchen</b><span>„War im Bergchalet diese Woche jemand?“ oder „Welche Häuser stehen seit über drei Tagen leer?“: Die Antwort kommt aus dem Bewegungsverlauf.</span></li>
+        <li><b>Ihre Daten, Ihre Freigabe</b><span>Der Assistent meldet sich mit Ihrem movero-Konto an und sieht nur Ihre Sensoren. Alarm-Regeln ändert er erst, wenn Sie zugestimmt haben.</span></li>
+      </ul>
+      <p class="fine">Die Sensoren melden sich etwa alle 20 Minuten. Die jüngste halbe Stunde kann deshalb noch fehlen.</p>
+    </div>
+    <figure class="chatfig">
+      <div class="chat" role="img" aria-label="Beispiel eines Chats mit einem KI-Assistenten: Er prüft die Abreisen und Anreisen des Tages, meldet, dass Haus am See leer ist, im Chalet am Hang noch Bewegung herrscht und im Eifelblick die Gäste angekommen sind. Außerdem meldet er, dass das Alte Forsthaus seit zwei Tagen offline ist, und hat den Hausmeister per E-Mail informiert.">
+        <div class="chat-h"><b>KI-Assistent</b><span><i></i>movero verbunden</span></div>
+        <div class="chat-b">
+          <div class="msg auto"><small>Tägliche Prüfung · 07:00</small><p><b>Altes Forsthaus</b> meldet sich seit 2 Tagen nicht. Ich habe Hausmeister Jansen per E-Mail gebeten, nach dem Sensor zu sehen. Alle anderen 11 Sensoren sind online.</p></div>
+          <div class="msg u"><p>Heute reisen Haus am See und Chalet am Hang um 10 Uhr ab, Eifelblick bekommt um 16 Uhr neue Gäste. Passt alles?</p></div>
+          <div class="tool">movero · 3 Sensoren abgefragt</div>
+          <div class="msg a">
+            <p>Stand 16:40 Uhr:</p>
+            <ul class="chk">
+              <li class="ok"><b>Haus am See</b><span>Check-out: letzte Bewegung 09:48, seitdem 6 h 52 min Ruhe. Das Haus ist leer.</span></li>
+              <li class="warn"><b>Chalet am Hang</b><span>Check-out: noch Bewegung bis 11:35, also über anderthalb Stunden nach der Abreise. Vielleicht war das die Reinigung. Soll ich nachfragen?</span></li>
+              <li class="ok"><b>Eifelblick</b><span>Check-in: erste Bewegung um 16:12. Die Gäste sind angekommen.</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="chat-in"><span>Nachricht an den Assistenten…</span><i>↑</i></div>
+      </div>
+      <figcaption><b>So kann das im Chat aussehen</b><span>Beispiel mit erfundenen Häusern und Namen.</span></figcaption>
     </figure>
   </div>
 </section>
