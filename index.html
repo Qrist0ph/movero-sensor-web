@@ -126,6 +126,14 @@
     "@type": "Answer",
     "text": "Die App gibt es aktuell für Android bei Google Play. Auf dem iPhone und am Computer nutzen Sie movero-sensor über die Web-App unter app.movero-sensor.de im Browser."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Wie verbinde ich movero-sensor mit meinem KI-Assistenten?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Öffnen Sie die Web-App unter app.movero-sensor.de und klicken Sie oben auf „KI-Assistent“. Dort stehen alle Angaben zum Kopieren. In Claude gehen Sie auf Einstellungen → Connectors → Eigenen Connector hinzufügen und tragen als Server-URL https://app.movero-sensor.de/mcp ein. Unter „Erweiterte Einstellungen“ wählen Sie „Eigenen OAuth-Client verwenden“, geben die Client-ID 398529151537105461 ein und lassen das Secret leer. Danach melden Sie sich mit Ihrem movero-Konto an. Der Assistent sieht nur die Sensoren Ihres Kontos. Die abgefragten Bewegungsdaten gehen an den Anbieter des Assistenten."
+   }
   }
  ]
 }
@@ -300,7 +308,7 @@
                display:flex; align-items:center; justify-content:center; }
   .ai-fine { color:var(--muted); font-size:14.5px; text-align:center; max-width:46em; margin:40px auto 0; }
   .ai-cta { text-align:center; margin-top:22px; }
-  .ai-cta .btn { white-space:normal; }
+  .ai-cta .btn { white-space:normal; margin:6px; }
   @media (max-width:900px){ .ai { grid-template-columns:1fr; gap:32px; margin-top:48px; } }
   @media (max-width:760px){ .chat-b { padding:14px 12px; } .msg { max-width:94%; } }
   .cta-band { text-align:center; background:var(--accent-soft); border-radius:28px; padding:56px 26px; }
@@ -528,7 +536,7 @@
       </figure>
     </div>
     <p class="ai-fine">Die Sensoren melden sich etwa alle 20 Minuten, die jüngste halbe Stunde kann deshalb noch fehlen. Die Bewegungsdaten gehen an den Anbieter des KI-Assistenten, den Sie verbinden. Klären Sie das bitte vorab mit Ihrer oder Ihrem Datenschutzbeauftragten. movero-sensor ersetzt keinen Hausnotruf und kein medizinisches Gerät.</p>
-    <div class="ai-cta"><a class="btn pri" href="mailto:support@movero-sensor.de?subject=movero-sensor%20f%C3%BCr%20Pflegedienste">Konditionen für Pflegedienste anfragen</a></div>
+    <div class="ai-cta"><a class="btn" href="#ki-verbinden">So verbinden Sie den Assistenten</a> <a class="btn pri" href="mailto:support@movero-sensor.de?subject=movero-sensor%20f%C3%BCr%20Pflegedienste">Konditionen für Pflegedienste anfragen</a></div>
   </div>
 </section>
 
@@ -550,6 +558,7 @@
       <details class="q"><summary>Wie schnell erfahre ich von einer Inaktivität?</summary><p>Der Sensor sammelt Bewegungen und überträgt sie stromsparend in regelmäßigen Abständen. Deshalb kann eine Meldung bis zu etwa einer halben Stunde verzögert eintreffen. movero-sensor ist für das Erkennen ungewöhnlich langer Ruhephasen gedacht – nicht für Sekunden-Alarme. Er ersetzt keinen Hausnotruf und kein medizinisches Gerät.</p></details>
       <details class="q"><summary>Was passiert, wenn der Sensor keine Verbindung hat oder keinen Strom bekommt?</summary><p>Meldet sich ein Sensor längere Zeit nicht, zeigt die App ihn als <b>offline</b> an. So erkennen Sie, ob etwa der Stecker gezogen wurde oder der Empfang gestört ist, und können nach dem Rechten sehen.</p></details>
       <details class="q"><summary>Werden meine Angehörigen dabei überwacht?</summary><p>Nein. Der Sensor erkennt ausschließlich, <i>ob</i> sich im Raum etwas bewegt – nicht wer, nicht was und nicht wo genau. Es gibt keine Kamera und kein Mikrofon. Die Daten liegen auf Servern in Deutschland, und Sie können Ihr Konto samt aller Daten jederzeit löschen.</p></details>
+      <details class="q" id="ki-verbinden"><summary>Wie verbinde ich movero-sensor mit meinem KI-Assistenten?</summary><p>Öffnen Sie die Web-App unter <a href="https://app.movero-sensor.de">app.movero-sensor.de</a> und klicken Sie oben auf <b>„KI-Assistent“</b>. Dort stehen alle Angaben zum Kopieren. In Claude gehen Sie auf Einstellungen → Connectors → Eigenen Connector hinzufügen und tragen als Server-URL <b>https://app.movero-sensor.de/mcp</b> ein. Unter „Erweiterte Einstellungen“ wählen Sie „Eigenen OAuth-Client verwenden“, geben die Client-ID <b>398529151537105461</b> ein und lassen das Secret leer. Danach melden Sie sich mit Ihrem movero-Konto an. Der Assistent sieht nur die Sensoren Ihres Kontos. Die abgefragten Bewegungsdaten gehen an den Anbieter des Assistenten.</p></details>
       <details class="q"><summary>Gibt es die App auch für das iPhone?</summary><p>Die App gibt es aktuell für Android bei Google Play. Auf dem iPhone und am Computer nutzen Sie movero-sensor über die Web-App unter app.movero-sensor.de im Browser.</p></details>
     </div>
     <p class="faq-more">Ihre Frage war nicht dabei? Schreiben Sie uns an
@@ -649,6 +658,11 @@
     });
     location.reload();
   }
+</script>
+<script>
+  // FAQ-Eintrag per Anker (#ki-verbinden) direkt aufgeklappt anzeigen.
+  (function(){ function o(){ var d=document.getElementById(location.hash.slice(1)); if(d&&d.tagName==='DETAILS') d.open=true; }
+    addEventListener('hashchange',o); o(); })();
 </script>
 </body>
 </html>

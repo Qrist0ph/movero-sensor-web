@@ -304,6 +304,15 @@
   .step::before { counter-increment:s; content:counter(s); width:36px; height:36px; border-radius:50%;
                   border:1px solid var(--ink); font-weight:600; display:flex; align-items:center; justify-content:center; }
 
+  /* montage video */
+  .montage { display:grid; grid-template-columns:1fr 1.25fr; gap:40px; align-items:center; margin-top:48px;
+             background:var(--soft); border:1px solid var(--line); border-radius:20px; padding:32px; }
+  .montage > * { min-width:0; }
+  .montage h3 { font-size:clamp(1.4rem,2.6vw,1.9rem); margin:8px 0 10px; line-height:1.2; }
+  .montage p { color:var(--muted); margin:0; }
+  .montage video { display:block; width:100%; height:auto; border-radius:14px; background:#ddd; }
+  @media (max-width:760px){ .montage { grid-template-columns:1fr; gap:20px; padding:18px; } }
+
   /* faq */
   .faq { max-width:820px; border-top:1px solid var(--line); }
   .faq details { border-bottom:1px solid var(--line); }
@@ -540,6 +549,7 @@
         <li><b>Ihre Daten, Ihre Freigabe</b><span>Der Assistent meldet sich mit Ihrem movero-Konto an und sieht nur Ihre Sensoren. Alarm-Regeln ändert er erst, wenn Sie zugestimmt haben.</span></li>
       </ul>
       <p class="fine">Die Sensoren melden sich etwa alle 20 Minuten. Die jüngste halbe Stunde kann deshalb noch fehlen.</p>
+      <p class="fine"><a class="btn" href="#ki-verbinden">So verbinden Sie den Assistenten</a></p>
     </div>
     <figure class="chatfig">
       <div class="chat" role="img" aria-label="Beispiel eines Chats mit einem KI-Assistenten: Er prüft die Abreisen und Anreisen des Tages, meldet, dass Haus am See leer ist, im Chalet am Hang noch Bewegung herrscht und im Eifelblick die Gäste angekommen sind.">
@@ -735,6 +745,23 @@
       <div class="step"><h3>Einstellen</h3><p>Objekt benennen, Zeitfenster wählen und auf Wunsch das Team einladen.</p></div>
       <div class="step"><h3>Entspannen</h3><p>Die App meldet sich, wenn sich etwas tut. Sonst bleibt es ruhig.</p></div>
     </div>
+    <div class="montage">
+      <div>
+        <span class="eyebrow">In einer Minute montiert</span>
+        <h3>An die Wand, einstecken, fertig.</h3>
+        <p>Kein Bohren, kein Werkzeug, kein WLAN-Passwort. Das schafft auch der Hausmeister beim nächsten Wechsel.</p>
+      </div>
+      <video autoplay muted loop playsinline preload="metadata" poster="/montage-poster.jpg"
+             aria-label="Video: Der movero-Sensor wird an eine Fliesenwand gesetzt und in die Steckdose gesteckt.">
+        <source src="/montage.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <script>
+      // Bei "Bewegung reduzieren" kein Autoplay, sondern Standbild mit Bedienelementen.
+      if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var v = document.querySelector(".montage video"); v.removeAttribute("autoplay"); v.pause(); v.controls = true;
+      }
+    </script>
   </div>
 </section>
 
@@ -796,6 +823,7 @@
       <details><summary>Erkennt der Sensor, wie viele Personen im Haus sind?</summary><p>Nein. Er erkennt nur, ob sich im Erfassungsbereich etwas bewegt – nicht wer und nicht wie viele. Auch der Party-Verdacht ist nur ein Hinweis auf ungewöhnlich viel Bewegung, kein Beweis.</p></details>
       <details><summary>Muss ich meine Gäste über den Sensor informieren?</summary><p>Wir empfehlen es ausdrücklich: im Inserat, in der Hausordnung und vor der Buchung. Bringen Sie den Sensor nur in Gemeinschaftsräumen an, nie in Schlafzimmern oder Bädern, und prüfen Sie die Regeln Ihrer Buchungsplattform. Das ist keine Rechtsberatung.</p></details>
       <details><summary>Was passiert, wenn jemand den Stecker zieht?</summary><p>Meldet sich ein Sensor längere Zeit nicht, zeigt die App ihn als offline an. So erkennen Sie, dass der Stecker gezogen wurde, der Strom ausgefallen oder der Empfang gestört ist.</p></details>
+      <details id="ki-verbinden"><summary>Wie verbinde ich movero-sensor mit meinem KI-Assistenten?</summary><p>Öffnen Sie die Web-App unter <a href="https://app.movero-sensor.de">app.movero-sensor.de</a> und klicken Sie oben auf <b>„KI-Assistent“</b>. Dort stehen alle Angaben zum Kopieren. In Claude gehen Sie auf Einstellungen → Connectors → Eigenen Connector hinzufügen und tragen als Server-URL <b>https://app.movero-sensor.de/mcp</b> ein. Unter „Erweiterte Einstellungen“ wählen Sie „Eigenen OAuth-Client verwenden“, geben die Client-ID <b>398529151537105461</b> ein und lassen das Secret leer. Danach melden Sie sich mit Ihrem movero-Konto an. Der Assistent sieht nur die Sensoren Ihres Kontos. Die abgefragten Bewegungsdaten gehen an den Anbieter des Assistenten.</p></details>
       <details><summary>Können Reinigungskraft oder Hausmeister mit auf den Sensor schauen?</summary><p>Ja. Sie können einen Sensor für andere Personen freigeben. Diese melden sich mit einem eigenen Konto an. Die Freigabe lässt sich jederzeit wieder entziehen.</p></details>
       <details><summary>Gibt es die App auch für das iPhone?</summary><p>Die App gibt es aktuell für Android bei Google Play. Auf dem iPhone und am Computer nutzen Sie movero-sensor über die Web-App unter app.movero-sensor.de im Browser.</p></details>
     </div>
@@ -918,6 +946,11 @@
     });
     location.reload();
   }
+</script>
+<script>
+  // FAQ-Eintrag per Anker (#ki-verbinden) direkt aufgeklappt anzeigen.
+  (function(){ function o(){ var d=document.getElementById(location.hash.slice(1)); if(d&&d.tagName==='DETAILS') d.open=true; }
+    addEventListener('hashchange',o); o(); })();
 </script>
 </body>
 </html>
