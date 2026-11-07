@@ -259,6 +259,50 @@
   .faq-more { text-align:center; color:var(--muted); margin:32px 0 0; font-size:16.5px; }
   .faq-more a { color:var(--accent-d); text-decoration:underline; }
 
+  /* Pflegedienste + KI-Assistent (MCP) */
+  .ai { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:64px; }
+  .ai > * { min-width:0; }
+  .ai h3 { font-size:clamp(1.5rem,2.8vw,2rem); line-height:1.2; margin:14px 0 10px; }
+  .ai-lead { color:var(--muted); margin:0 0 22px; font-size:17.5px; }
+  .ticks { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+  .ticks li { position:relative; padding-left:34px; }
+  .ticks li::before { content:"✓"; position:absolute; left:0; top:2px; width:24px; height:24px; border-radius:50%;
+                      background:var(--accent-soft); color:var(--accent-d); font-size:13px; font-weight:700;
+                      display:flex; align-items:center; justify-content:center; }
+  .ticks b { display:block; }
+  .ticks span { color:var(--muted); font-size:16.5px; }
+  .chatfig { margin:0; }
+  .chatfig figcaption { text-align:center; color:var(--muted); font-size:15px; margin-top:14px; }
+  .chat { background:var(--card); border:1px solid var(--line); border-radius:22px; overflow:hidden; font-size:15px; line-height:1.5;
+          box-shadow:0 30px 60px -40px rgba(90,60,30,.45); }
+  .chat-h { display:flex; align-items:center; gap:10px; padding:14px 20px; border-bottom:1px solid var(--line); }
+  .chat-h b { font-size:16px; }
+  .chat-h span { margin-left:auto; display:flex; align-items:center; gap:6px; color:var(--accent-d); font-size:13px; font-weight:600; }
+  .chat-h span i { width:8px; height:8px; border-radius:50%; background:var(--accent); }
+  .chat-b { display:flex; flex-direction:column; gap:12px; padding:18px 20px; background:var(--bg); }
+  .msg { max-width:88%; border-radius:16px; padding:11px 15px; }
+  .msg p { margin:0; }
+  .msg.u { align-self:flex-end; background:var(--ink); color:#fff; border-bottom-right-radius:5px; }
+  .msg.a { align-self:flex-start; background:var(--card); border:1px solid var(--line); border-bottom-left-radius:5px; }
+  .msg.auto { align-self:stretch; max-width:none; background:var(--warm-soft); border:1px solid #f3cfc2; }
+  .msg.auto small { display:block; color:#b4553b; font-size:12.5px; font-weight:600; margin-bottom:2px; }
+  .tool { align-self:flex-start; font-size:12.5px; color:var(--muted); background:var(--card); border:1px dashed #cfc3b2; border-radius:999px; padding:3px 12px; }
+  .chk { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .chk li { position:relative; padding-left:26px; }
+  .chk li::before { position:absolute; left:0; top:2px; width:18px; height:18px; border-radius:50%; font-size:11px; font-weight:700;
+                    display:flex; align-items:center; justify-content:center; }
+  .chk li.ok::before { content:"✓"; background:var(--accent-soft); color:var(--accent-d); }
+  .chk li.warn::before { content:"!"; background:var(--warm-soft); color:#b4553b; }
+  .chk b { display:block; font-size:14.5px; }
+  .chk span { color:var(--muted); font-size:14px; }
+  .chat-in { display:flex; align-items:center; gap:10px; margin:12px 16px; padding:10px 10px 10px 16px; border:1px solid var(--line); border-radius:14px; color:#8f877c; font-size:14.5px; }
+  .chat-in i { margin-left:auto; width:30px; height:30px; border-radius:9px; background:var(--accent); color:#fff; font-style:normal; font-weight:700;
+               display:flex; align-items:center; justify-content:center; }
+  .ai-fine { color:var(--muted); font-size:14.5px; text-align:center; max-width:46em; margin:40px auto 0; }
+  .ai-cta { text-align:center; margin-top:22px; }
+  .ai-cta .btn { white-space:normal; }
+  @media (max-width:900px){ .ai { grid-template-columns:1fr; gap:32px; margin-top:48px; } }
+  @media (max-width:760px){ .chat-b { padding:14px 12px; } .msg { max-width:94%; } }
   .cta-band { text-align:center; background:var(--accent-soft); border-radius:28px; padding:56px 26px; }
   .cta-band h2 { font-size:clamp(1.8rem,3.6vw,2.4rem); margin:0 0 12px; }
   .cta-band p { color:var(--muted); margin:0 auto 28px; max-width:34em; font-size:19px; }
@@ -297,6 +341,7 @@
       <a href="#so">So funktioniert's</a>
       <a href="#warum">Warum movero</a>
       <a href="#faq">FAQ</a>
+      <a href="#pflegedienste">Pflegedienste</a>
       <a href="/objektschutz/">Objektschutz</a>
       <a href="/ferienhaus/">Ferienhaus</a>
       <a class="btn" href="https://app.movero-sensor.de">Zur App</a>
@@ -431,7 +476,63 @@
   </div>
 </section>
 
-<section class="sec alt" id="faq">
+<section class="sec alt" id="pflegedienste">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Für Pflegedienste</span>
+      <h2>Alle Klientinnen und Klienten im Blick, auch zwischen den Besuchen</h2>
+      <p>Ein ambulanter Pflegedienst sieht seine Klienten oft nur ein- oder zweimal am Tag. movero-sensor zeigt
+         Ihrem Team dazwischen, ob der Alltag seinen gewohnten Gang geht. Mit Einverständnis der Klienten und ohne Kamera.</p>
+    </div>
+    <div class="cards">
+      <div class="c"><div class="ic">🗂️</div><h3>Ein Konto, viele Klienten</h3>
+        <p>Jeder Sensor bekommt einen eigenen Namen und eigene Alarm-Regeln. Ein Kürzel reicht, Klarnamen sind nicht nötig.</p></div>
+      <div class="c"><div class="ic">👥</div><h3>Für das ganze Team</h3>
+        <p>Geben Sie Sensoren für Pflegekräfte, die Tourenplanung oder Angehörige frei und entziehen Sie die Freigabe jederzeit wieder.</p></div>
+      <div class="c"><div class="ic">🔔</div><h3>Inaktivitäts-Alarm je Klient</h3>
+        <p>Wer lange schläft, bekommt eine großzügigere Zeit. Bleibt die Bewegung ungewöhnlich lange aus, meldet sich die App.</p></div>
+      <div class="c"><div class="ic">📶</div><h3>Ohne WLAN beim Klienten</h3>
+        <p>Der Mobilfunk ist eingebaut. Sensor an die Wand, Stecker in die Steckdose, fertig.</p></div>
+    </div>
+
+    <div class="ai">
+      <div>
+        <span class="eyebrow">Neu: movero im KI-Assistenten</span>
+        <h3>Fragen Sie Ihren KI-Assistenten, wie es Ihren Klienten geht</h3>
+        <p class="ai-lead">Verbinden Sie movero mit einem KI-Assistenten wie Claude. Er liest die Sensoren Ihres Kontos und
+           beantwortet Fragen in normaler Sprache. Auf Wunsch prüft er alle Klienten jeden Morgen von selbst.</p>
+        <ul class="ticks">
+          <li><b>Morgen-Check vor der Tour</b><span>Der Assistent sagt Ihnen, bei wem seit dem Aufstehen noch keine Bewegung war und wen Sie zuerst anrufen oder besuchen sollten.</span></li>
+          <li><b>Auffälligkeiten im Verlauf</b><span>Eine unruhige Nacht oder deutlich weniger Bewegung als in der Vorwoche erkennt er im Verlauf. Das ist ein Anlass für ein Gespräch, keine Diagnose.</span></li>
+          <li><b>Ergebnis automatisch im Team</b><span>Die tägliche Übersicht geht an die Pflegedienstleitung oder die Tour, über die Kanäle, die Sie dem Assistenten freigegeben haben, zum Beispiel E-Mail.</span></li>
+          <li><b>Nur Ihre Sensoren</b><span>Der Assistent meldet sich mit Ihrem movero-Konto an und sieht nur dessen Sensoren. Alarm-Regeln ändert er erst, wenn Sie zugestimmt haben.</span></li>
+        </ul>
+      </div>
+      <figure class="chatfig">
+        <div class="chat" role="img" aria-label="Beispiel eines Chats mit einem KI-Assistenten: Beim Morgen-Check um 07:30 hatten 17 von 18 Klienten schon Bewegung, bei Herrn B. noch nicht, die Tour 1 wurde informiert. Auf die Frage nach der Nacht von Frau W. antwortet der Assistent, sie sei zwischen 1 und 4 Uhr deutlich unruhiger gewesen als in den sieben Nächten davor und seit 07:05 wie gewohnt aktiv.">
+          <div class="chat-h"><b>KI-Assistent</b><span><i></i>movero verbunden</span></div>
+          <div class="chat-b">
+            <div class="msg auto"><small>Morgen-Check · 07:30</small><p>17 von 18 Klienten hatten seit 6 Uhr Bewegung. Bei <b>Herrn B.</b> war seit gestern 21:50 Ruhe, sonst ist er werktags gegen 06:30 aktiv. Ich habe Tour 1 per E-Mail informiert.</p></div>
+            <div class="msg u"><p>Wie war die Nacht bei Frau W.? Ihre Tochter hat angerufen.</p></div>
+            <div class="tool">movero · Verlauf der letzten 8 Tage abgefragt</div>
+            <div class="msg a">
+              <ul class="chk">
+                <li class="warn"><b>Unruhiger als sonst</b><span>Zwischen 01:10 und 03:40 Uhr gab es in 11 Minuten Bewegung. In den sieben Nächten davor waren es im Schnitt 2.</span></li>
+                <li class="ok"><b>Heute Morgen wie gewohnt</b><span>Erste Bewegung um 07:05, seitdem regelmäßig aktiv.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="chat-in"><span>Nachricht an den Assistenten…</span><i>↑</i></div>
+        </div>
+        <figcaption>Beispiel mit erfundenen Klienten.</figcaption>
+      </figure>
+    </div>
+    <p class="ai-fine">Die Sensoren melden sich etwa alle 20 Minuten, die jüngste halbe Stunde kann deshalb noch fehlen. Die Bewegungsdaten gehen an den Anbieter des KI-Assistenten, den Sie verbinden. Klären Sie das bitte vorab mit Ihrer oder Ihrem Datenschutzbeauftragten. movero-sensor ersetzt keinen Hausnotruf und kein medizinisches Gerät.</p>
+    <div class="ai-cta"><a class="btn pri" href="mailto:support@movero-sensor.de?subject=movero-sensor%20f%C3%BCr%20Pflegedienste">Konditionen für Pflegedienste anfragen</a></div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
   <div class="wrap">
     <div class="shead">
       <span class="eyebrow">Häufige Fragen</span>
@@ -456,7 +557,7 @@
   </div>
 </section>
 
-<section class="sec">
+<section class="sec alt">
   <div class="wrap">
     <div class="cta-band">
       <h2>Ein gutes Gefühl im Alltag</h2>
